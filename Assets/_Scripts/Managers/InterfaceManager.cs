@@ -11,12 +11,12 @@ public class InterfaceManager : MonoBehaviour
 
    private void OnEnable()
    {
-      EventManager.AddListener("TakeDamage", OnTakeDamage);
+      EventManager.AddListener("PlayerTakeDamage", OnTakeDamage);
    }
 
    private void OnDisable()
    {
-      EventManager.RemoveListener("TakeDamage", OnTakeDamage);
+      EventManager.RemoveListener("PlayerTakeDamage", OnTakeDamage);
    }
 
    private void Start()

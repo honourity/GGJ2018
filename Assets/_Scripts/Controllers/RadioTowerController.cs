@@ -23,7 +23,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private float _maxDurability = 1f;
    [SerializeField]
    private float _transmitTime = 1f;
-
    private IMessageReceiver[] _linkedReceivers;
    private float _durability;
    private bool _needsRepair;
