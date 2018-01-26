@@ -7,7 +7,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private GameObject[] _linkedReceiverObjects;
 
    private float _transmitTime = 1f;
-
    private IMessageReceiver[] _linkedReceivers;
 
    public void ProcessMessage()
