@@ -29,10 +29,25 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
-      Debug.Log(gameObject.name + " got a message, processing...");
+      if (!Broken)
+      {
+         Debug.Log(gameObject.name + " got a message, processing...");
 
-      var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-      StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+         if (_linkedReceivers.Length > 0)
+         {
+            var receiverIndex = Random.Range(0, _linkedReceivers.Length);
+            StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+         }
+         else
+         {
+            Debug.Log(gameObject.name + " got a message, but has no targets to send to");
+         }
+      }
+      else
+      {
+         //todo - fizzle and pop amongst wreckage
+         Debug.Log(gameObject.name + " got a message, broken! cant transmit!");
+      }
    }
 
    private void Awake()
@@ -59,7 +74,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       {
          //todo - animate?!?
 
-         timer -= Time.deltaTime;
+         timer += Time.deltaTime;
          yield return new WaitForEndOfFrame();
       }
 
