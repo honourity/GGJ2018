@@ -5,6 +5,7 @@ public class MissileController : MonoBehaviour
    [SerializeField]
    private ArrowController _arrowPrefab = null;
 
+   private float _damage = 1f;
    private float _upDistance = 2f;
    private float _launchSpeed = 4f;
    private float _acceleration = 1f;
@@ -61,7 +62,7 @@ public class MissileController : MonoBehaviour
 
    private void Explode()
    {
-      GameManager.Instance.Player.Health--;
+      GameManager.Instance.Player.TakeDamage(_damage);
       Destroy(gameObject);
    }
 

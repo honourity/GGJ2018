@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -24,7 +22,7 @@ public class UnitController : MonoBehaviour
 
    void Update()
    {
-      Vector3 playerPos = GameManager.Instance.PlayerController.transform.position;
+      Vector3 playerPos = GameManager.Instance.Player.transform.position;
 
       if (Vector2.Distance(transform.position, playerPos) > _desiredDistance)
       {
