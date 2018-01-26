@@ -43,15 +43,20 @@ public class PlayerController : MonoBehaviour
             break;
       }
 
-      transform.Translate(translation.normalized * _speed);
+      transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
 
-   public void Pounce()
+   public void Jump()
    {
       throw new NotImplementedException();
    }
 
    public void Attack()
+   {
+      throw new NotImplementedException();
+   }
+
+   public void Ultimate()
    {
       throw new NotImplementedException();
    }
