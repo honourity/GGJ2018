@@ -3,12 +3,30 @@ using UnityEngine;
 
 public class RadioTowerController : MonoBehaviour, IMessageReceiver
 {
+   public bool Broken { get
+      {
+         if (_needsRepair && _durability < _maxDurability)
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+   }
+
    [SerializeField]
    private GameObject[] _linkedReceiverObjects;
 
+   [SerializeField]
+   private float _maxDurability = 1f;
+   [SerializeField]
    private float _transmitTime = 1f;
 
    private IMessageReceiver[] _linkedReceivers;
+   private float _durability;
+   private bool _needsRepair;
 
    public void ProcessMessage()
    {
@@ -18,8 +36,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
    }
 
-   private void Start()
+   private void Awake()
    {
+      _durability = _maxDurability;
+
       _linkedReceivers = new IMessageReceiver[_linkedReceiverObjects.Length];
 
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
@@ -49,13 +69,25 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       yield return null;
    }
 
-   public void TakeDamage(float amount)
+   public void RemoveDurability(float amount)
    {
+      _durability -= amount;
+      if (_durability < 0) _durability = 0;
 
+      if (_durability == 0)
+      {
+         _needsRepair = true;
+      }
    }
 
-   public void AddHealth(float amount)
+   public void AddDurability(float amount)
    {
+      _durability += amount;
+      if (_maxDurability < 0) _maxDurability = 0;
 
+      if (_durability == _maxDurability)
+      {
+         _needsRepair = false;
+      }
    }
 }
