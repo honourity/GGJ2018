@@ -36,7 +36,8 @@ public class UnitController : MonoBehaviour
          else
             transform.localScale = new Vector3(_initialScale, _initialScale);
 
-         transform.Translate((diffVector) * _speed * Time.deltaTime);
+         transform.position = Vector3.Slerp(transform.position, playerPos, _speed * Time.deltaTime);
+         //transform.Translate((diffVector) * _speed * Time.deltaTime);
 
       }
       else

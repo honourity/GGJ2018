@@ -203,7 +203,7 @@ MonoBehaviour:
   Health: 2
   _healthBar: {fileID: 1790281326}
   _desiredDistance: 3
-  _speed: 0.3
+  _speed: 0.08
   targetTest: {fileID: 0}
 --- !u!1 &42419151
 GameObject:
@@ -408,7 +408,7 @@ MonoBehaviour:
   Health: 2
   _healthBar: {fileID: 1625489619}
   _desiredDistance: 3
-  _speed: 0.3
+  _speed: 0.08
   targetTest: {fileID: 0}
 --- !u!212 &200070459
 SpriteRenderer:
@@ -850,7 +850,7 @@ MonoBehaviour:
   Health: 2
   _healthBar: {fileID: 1254157852}
   _desiredDistance: 3
-  _speed: 0.3
+  _speed: 0.08
   targetTest: {fileID: 0}
 --- !u!212 &661172948
 SpriteRenderer:
@@ -28652,7 +28652,7 @@ MonoBehaviour:
   Health: 2
   _healthBar: {fileID: 317545017}
   _desiredDistance: 3
-  _speed: 0.3
+  _speed: 0.08
   targetTest: {fileID: 0}
 --- !u!212 &1734447288
 SpriteRenderer:
@@ -28990,4 +28990,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   Health: 10
-  _speed: 0.2
+  _speed: 1.5
