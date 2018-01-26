@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-   [SerializeField] float _speed;
+   public float Health = 10f;
+
+   [SerializeField]
+   private float _speed;
 
    public void Move(Enums.Directions direction)
    {
