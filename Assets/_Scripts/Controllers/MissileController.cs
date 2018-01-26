@@ -2,6 +2,9 @@
 
 public class MissileController : MonoBehaviour
 {
+   [SerializeField]
+   private ArrowController _arrowPrefab = null;
+
    private float _upDistance = 2f;
    private float _launchSpeed = 4f;
    private float _acceleration = 1f;
@@ -9,6 +12,9 @@ public class MissileController : MonoBehaviour
    private Vector3 _initialPosition;
    private bool _finishedLaunching;
    private float _currentSpeed;
+   private ArrowController _arrowInstance;
+   private bool _visible;
+   private bool _arrowCreated;
 
    private void Awake()
    {
@@ -19,15 +25,22 @@ public class MissileController : MonoBehaviour
    {
       if (_finishedLaunching)
       {
+         if (!_visible && !_arrowCreated)
+         {
+            _arrowInstance = Instantiate(_arrowPrefab, transform.position, Quaternion.identity, null);
+            _arrowInstance.Initialize(gameObject);
+            _arrowCreated = true;
+         }
+
          //fly at player
-         var vectorToPlayer = (GameManager.Instance.PlayerController.transform.position - transform.position).normalized;
+         var vectorToPlayer = (GameManager.Instance.Player.transform.position - transform.position).normalized;
          _currentSpeed += _acceleration;
          transform.position += vectorToPlayer * _currentSpeed * Time.deltaTime;
 
          //look at player
          transform.up = vectorToPlayer;
 
-         if (Vector3.Distance(transform.position, GameManager.Instance.PlayerController.transform.position) <= 0.5f)
+         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= 0.5f)
          {
             Explode();
          }
@@ -48,7 +61,17 @@ public class MissileController : MonoBehaviour
 
    private void Explode()
    {
-      GameManager.Instance.PlayerController.Health--;
+      GameManager.Instance.Player.Health--;
       Destroy(gameObject);
+   }
+
+   private void OnBecameVisible()
+   {
+      _visible = true;
+   }
+
+   private void OnBecameInvisible()
+   {
+      _visible = false;
    }
 }
