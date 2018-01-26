@@ -27306,7 +27306,7 @@ GameObject:
   - component: {fileID: 1454718612}
   - component: {fileID: 1454718616}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27386,7 +27386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7659c2de553fcd49ad7bfda4cb45bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followSpeed: 2
+  _followSpeed: 9999
   _minZoom: 0
   _maxZoom: 0
   _target: {fileID: 1936800569}
@@ -27614,4 +27614,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fdce30b0e10e041a47504689a5e278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 9
+  _speed: 0.2
