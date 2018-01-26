@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-   public float MaxHealth = 10f;
-   public float Health = 10f;
+   [SerializeField]
+   private float _maxHealth = 10f;
+   public float MaxHealth { get { return _maxHealth; } }
+   public float Health { get; private set; }
    
    [SerializeField]
    private float _speed;
@@ -47,9 +49,9 @@ public class PlayerController : MonoBehaviour
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
 
-   public void TakeDamage(float amount)
+   public void TakeDamage(float damage)
    {
-      Health -= amount;
+      Health -= damage;
       EventManager.FireEvent("TakeDamage");
    }
 

@@ -31,7 +31,7 @@ public class InterfaceManager : MonoBehaviour
 
    private void UpdateHealthBar()
    {
-      _playerHealth.fillAmount = GameManager.Instance.PlayerController.Health / GameManager.Instance.PlayerController.MaxHealth;
+      _playerHealth.fillAmount = GameManager.Instance.Player.Health / GameManager.Instance.Player.MaxHealth;
    }
 
 }

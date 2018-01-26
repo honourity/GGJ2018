@@ -9,57 +9,57 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1139139640833706}
+  m_RootGameObject: {fileID: 1426405698414222}
   m_IsPrefabParent: 1
---- !u!1 &1139139640833706
+--- !u!1 &1426405698414222
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4148112208065444}
-  - component: {fileID: 212446871119422086}
-  - component: {fileID: 114969413923368024}
+  - component: {fileID: 4648122683380568}
+  - component: {fileID: 212817966579720186}
+  - component: {fileID: 114327540236822214}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: MissileSilo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4148112208065444
+--- !u!4 &4648122683380568
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139139640833706}
+  m_GameObject: {fileID: 1426405698414222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.32, y: 16.44, z: 0}
+  m_LocalPosition: {x: 16.97, y: 7.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114969413923368024
+--- !u!114 &114327540236822214
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139139640833706}
+  m_GameObject: {fileID: 1426405698414222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133e71ab2d184d94f98b409b9f44bafe, type: 3}
+  m_Script: {fileID: 11500000, guid: a8499cc2f4d682c4a9115871e423045e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowPrefab: {fileID: 114658552124151048, guid: 0e34596f61139244fa4ade21bd2e5adb,
+  _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
---- !u!212 &212446871119422086
+--- !u!212 &212817966579720186
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139139640833706}
+  m_GameObject: {fileID: 1426405698414222}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 21300050, guid: 6578d96311de30c47a104dc9b1b9280e, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 07cef6d04e18b9247811eebaaa134cce, type: 3}
   m_Color: {r: 0.4325259, g: 0.4915881, b: 0.58823526, a: 1}
   m_FlipX: 0
   m_FlipY: 0

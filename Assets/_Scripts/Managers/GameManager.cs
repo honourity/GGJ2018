@@ -7,5 +7,9 @@ public class GameManager : MonoBehaviour
    public static GameManager Instance { get { return _instance = _instance ?? FindObjectOfType<GameManager>(); } }
 
    private PlayerController _playerController;
-   public PlayerController PlayerController { get { return _playerController = _playerController ?? FindObjectOfType<PlayerController>(); } }
+   public PlayerController Player { get { return _playerController = _playerController ?? FindObjectOfType<PlayerController>(); } }
+
+   private CameraController _camera;
+   public CameraController Camera { get { return _camera = _camera ?? FindObjectOfType<CameraController>(); } }
+
 }

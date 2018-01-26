@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -13,13 +11,19 @@ public class CameraController : MonoBehaviour
    private Vector3 _min;
    private Vector3 _max;
 
-   void Start()
+   //public void IsVisible(SpriteRenderer sprite)
+   //{
+   //   //todo - compare sprite bounds with camera bounds instead of centre of transform, since its visually inaccurate
+   //   sprite.transform.position
+   //}
+
+   private void Start()
    {
       _min = _levelBounds.bounds.min;
       _max = _levelBounds.bounds.max;
    }
 
-   void LateUpdate()
+   private void LateUpdate()
    {
       Vector3 newPosition = _target.position;
       newPosition.z = -10;

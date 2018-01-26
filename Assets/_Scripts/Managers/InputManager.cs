@@ -17,48 +17,49 @@ public class InputManager : MonoBehaviour
       //movement
       if (w && d)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.UpRight);
+         GameManager.Instance.Player.Move(Enums.Directions.UpRight);
       }
       else if (s && d)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.DownRight);
+         GameManager.Instance.Player.Move(Enums.Directions.DownRight);
       }
       else if (s && a)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.DownLeft);
+         GameManager.Instance.Player.Move(Enums.Directions.DownLeft);
       }
       else if (a && w)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.UpLeft);
+         GameManager.Instance.Player.Move(Enums.Directions.UpLeft);
       }
       else if (w)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.Up);
+         GameManager.Instance.Player.Move(Enums.Directions.Up);
       }
       else if (d)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.Right);
+         GameManager.Instance.Player.Move(Enums.Directions.Right);
       }
       else if (s)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.Down);
+         GameManager.Instance.Player.Move(Enums.Directions.Down);
       }
       else if (a)
       {
-         GameManager.Instance.PlayerController.Move(Enums.Directions.Left);
+         GameManager.Instance.Player.Move(Enums.Directions.Left);
       }
 
       //actions
-      if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.PlayerController.Jump();
-      if (Input.GetKeyDown(KeyCode.F)) GameManager.Instance.PlayerController.Attack();
-      if (Input.GetKeyDown(KeyCode.R)) GameManager.Instance.PlayerController.Ultimate();
+      if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.Player.Jump();
+      if (Input.GetKeyDown(KeyCode.F)) GameManager.Instance.Player.Attack();
+      if (Input.GetKeyDown(KeyCode.R)) GameManager.Instance.Player.Ultimate();
 
 
       #region Debug Input
       if (Input.GetKeyDown(KeyCode.M))
       {
+         //force a missile launch
          var silo = FindObjectOfType<MissileSiloController>();
-         silo.Launch();
+         silo.ProcessMessage();
       }
       #endregion  
    }
