@@ -48,4 +48,14 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
       yield return null;
    }
+
+   public void TakeDamage(float amount)
+   {
+
+   }
+
+   public void AddHealth(float amount)
+   {
+
+   }
 }
