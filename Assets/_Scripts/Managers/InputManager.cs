@@ -57,8 +57,9 @@ public class InputManager : MonoBehaviour
       #region Debug Input
       if (Input.GetKeyDown(KeyCode.M))
       {
+         //force a missile launch
          var silo = FindObjectOfType<MissileSiloController>();
-         silo.Launch();
+         silo.ProcessMessage();
       }
       #endregion  
    }
