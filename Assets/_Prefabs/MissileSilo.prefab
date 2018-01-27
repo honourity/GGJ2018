@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
-  _signalTarget: {fileID: 0}
+  _signalTarget: {fileID: 4054051394077084}
 --- !u!212 &212817966579720186
 SpriteRenderer:
   m_ObjectHideFlags: 1
