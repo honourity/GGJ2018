@@ -544,11 +544,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.3600006
+      value: -4.53
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.8299999
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.z
@@ -631,7 +631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4784455345436342, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.864
+      value: 11.73
       objectReference: {fileID: 0}
     - target: {fileID: 4784455345436342, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
       propertyPath: m_LocalPosition.z
@@ -28482,15 +28482,15 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 1454718614}
+  m_PlaneDistance: 3.3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_AdditionalShaderChannelsFlag: -1
+  m_SortingLayerID: 805538799
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1142588855
@@ -29065,8 +29065,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 20
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -29088,8 +29088,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454718611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: 12.53, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.51, y: 11.73, z: -10}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29141,7 +29141,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 1454718615}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967263
   stopNaNPropagation: 1
   antialiasingMode: 0
   temporalAntialiasing:
@@ -29176,8 +29176,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -29284,11 +29284,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.13
+      value: -6.42
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.48999977
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.z
