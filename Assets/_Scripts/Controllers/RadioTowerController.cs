@@ -52,7 +52,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private void Awake()
    {
       _durability = _maxDurability;
-
       _linkedReceivers = new IMessageReceiver[_linkedReceiverObjects.Length];
 
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
@@ -124,7 +123,18 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
 
       sr.color = Color.black;
+   }
 
+   void OnDrawGizmos()
+   {
+      if (_linkedReceiverObjects != null && _linkedReceiverObjects.Length > 0)
+      {
+         foreach (GameObject go in _linkedReceiverObjects)
+         {
+            Debug.DrawLine(transform.position, go.transform.position, Color.red);
+         }
+
+      }
    }
 
 }
