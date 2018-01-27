@@ -71,19 +71,7 @@ public class InputManager : MonoBehaviour
 
       #region Debug Input
 
-      if (Input.GetKeyDown(KeyCode.M))
-      {
-         //force a missile launch
-         var silo = FindObjectOfType<MissileSiloController>();
-         silo.ProcessMessage();
-      }
-
-      if (Input.GetKeyDown(KeyCode.T))
-      {
-         _tower.ProcessMessage();
-      }
-
-      if (Input.GetKeyDown(KeyCode.K))
+      if (Input.GetKeyDown(KeyCode.X))
       {
          GameManager.Instance.Player.TakeDamage(1);
       }

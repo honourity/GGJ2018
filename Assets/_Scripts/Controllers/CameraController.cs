@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
 
    private void Start()
    {
+      if (_target == null) _target = GameManager.Instance.Player.transform;
+
       _min = _levelBounds.bounds.min;
       _max = _levelBounds.bounds.max;
    }
