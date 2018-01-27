@@ -9,7 +9,7 @@ public class MissileController : MonoBehaviour
    private float _upDistance = 2f;
    private float _launchSpeed = 4f;
    private float _acceleration = 0.33f;
-   [SerializeField] private float _maxSpeed = 3f;
+   [SerializeField] private float _maxSpeed = 5f;
    private float _distanceExplode = 0.2f;
 
    private Vector3 _initialPosition;

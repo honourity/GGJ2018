@@ -28,6 +28,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    [SerializeField] private bool _needsRepair;
 
    private float _durability;
+   private SpriteRenderer _sr;
 
    public void ProcessMessage()
    {
@@ -50,6 +51,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       _durability = _maxDurability;
       _linkedReceivers = new IMessageReceiver[_linkedReceiverObjects.Length];
+      _sr = GetComponent<SpriteRenderer>();
 
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
       {
@@ -86,9 +88,11 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
       if (_durability <= 0)
       {
+         //BROKEN!
          _needsRepair = true;
          TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
          truck.Initialize(this);
+         _sr.color = Color.red;
       }
    }
 
@@ -105,8 +109,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public IEnumerator Repair()
    {
-      SpriteRenderer sr = GetComponent<SpriteRenderer>();
-      sr.color = Color.yellow;
+      _sr.color = Color.yellow;
 
       while (_needsRepair)
       {
@@ -114,7 +117,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
-      sr.color = Color.white;
+      _sr.color = Color.white;
    }
 
    void OnDrawGizmos()
