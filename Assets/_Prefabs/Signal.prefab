@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114760792882409720}
   - component: {fileID: 95504222461886180}
   m_Layer: 0
-  m_Name: Signals
+  m_Name: Signal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,9 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41c58382e20e3c46a93f0a0aa3a736f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _desiredDistance: 0.5
-  _speed: 2
 --- !u!212 &212096843267764932
 SpriteRenderer:
   m_ObjectHideFlags: 1
