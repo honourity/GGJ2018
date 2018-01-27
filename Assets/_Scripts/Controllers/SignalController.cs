@@ -1,24 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SignalController : MonoBehaviour
 {
-   [SerializeField] Transform _target;
+   private Transform _target;
    private IMessageReceiver _messageReceiver;
-   [SerializeField] float _desiredDistance;
-   [SerializeField] float _speed;
+   private float _desiredDistance = 0.5f;
+   private float _speed = 2f;
    private Vector3 _diffVector;
 
-   private void Awake()
+   public void Initialize(Vector3 start, Transform end, IMessageReceiver receiver)
    {
-   }
-
-   public void Initialize(Vector3 from, Transform to)
-   {
-      transform.position = from;
-      _messageReceiver = to.GetComponent<IMessageReceiver>();
-      _target = to.transform;
+      transform.position = start;
+      _target = end.transform;
+      _messageReceiver = receiver;
       _diffVector = _target.position - transform.position;
       transform.right = -_diffVector;
    }

@@ -18,6 +18,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
+   public Transform SignalTarget { get { return _signalTarget; } }
+
    [SerializeField] private GameObject _signalPrefab = null;
    [SerializeField] private GameObject _truckPrefab = null;
    [SerializeField] private GameObject _blipBlipPrefab = null;
@@ -27,6 +29,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
+
+   [SerializeField] private Transform _signalTarget;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
@@ -67,9 +71,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
       {
          var receiver = _linkedReceiverObjects[i].GetComponent<IMessageReceiver>();
-         _linkedReceivers[i] = receiver;
 
          if (receiver == null) Debug.LogError(gameObject.name + " has a GameObject in its linked receivers which isnt a MessageReceiver");
+
+         _linkedReceivers[i] = receiver;
       }
    }
 
@@ -83,13 +88,13 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       if (!Broken)
       {
-         _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         _blipBlip = Instantiate(_blipBlipPrefab, _signalTarget.position, Quaternion.identity);
          yield return new WaitForSeconds(_transmitTime);
 
          foreach (GameObject go in _linkedReceiverObjects)
          {
-            SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
-            signal.Initialize(transform.position, go.transform);
+            var signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
+            signal.Initialize(transform.position, _signalTarget, receiver);
             if (_blipBlip != null) Destroy(_blipBlip);
          }
       }
@@ -97,7 +102,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       {
          //todo - fizzle the transmission
          // like this but fizzle
-         //_blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         //_blipBlip = Instantiate(_blipBlipPrefab, _signalTarget, Quaternion.identity);
       }
 
       yield return null;
