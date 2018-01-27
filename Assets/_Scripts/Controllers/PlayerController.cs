@@ -3,10 +3,18 @@ using UnityEngine;
 
 public class PlayerController : UnitController
 {
+   private Animator _animator;
+   private Enums.Directions _lastDirection;
+
    public override void TakeDamage(float damage)
    {
       base.TakeDamage(damage);
       EventManager.FireEvent("PlayerTakeDamage");
+   }
+
+   public void StopMoving()
+   {
+      _animator.SetBool("moving", false);
    }
 
    public void Move(Enums.Directions direction)
@@ -22,6 +30,7 @@ public class PlayerController : UnitController
             translation = Vector3.up + Vector3.right;
             break;
          case Enums.Directions.Right:
+            
             translation = Vector3.right;
             break;
          case Enums.Directions.DownRight:
@@ -44,6 +53,16 @@ public class PlayerController : UnitController
             break;
       }
 
+      //convert 8-way to 4-way direction for animation purposes
+      if ((int)direction >= 4)
+      {
+         direction -= 4;
+      }
+
+      //set animation
+      _animator.SetFloat("direction", (int)direction);
+      _animator.SetBool("moving", true);
+
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
 
@@ -60,5 +79,10 @@ public class PlayerController : UnitController
    public void Ultimate()
    {
       throw new NotImplementedException();
+   }
+
+   private void Awake()
+   {
+      _animator = GetComponentInChildren<Animator>();
    }
 }
