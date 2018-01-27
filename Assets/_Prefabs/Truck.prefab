@@ -53,8 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
-  _speed: 2
-  _targetPosition: {x: 0, y: 0, z: 0}
+  _speed: 2.3
+  _radioTower: {fileID: 0}
+  _desiredDistance: 1
 --- !u!212 &212052721777522894
 SpriteRenderer:
   m_ObjectHideFlags: 1
