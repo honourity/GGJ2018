@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerController : UnitController
 {
+   public bool Invulnerable { get; set; }
+
    [SerializeField]
    private Color _killColor = Color.red;
 
@@ -10,11 +12,10 @@ public class PlayerController : UnitController
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
    private Enums.Directions _previousDirection = Enums.Directions.Right;
-   private bool _invulnerable;
 
    public override void TakeDamage(float damage)
    {
-      if (!_invulnerable)
+      if (!Invulnerable)
       {
          base.TakeDamage(damage);
          EventManager.FireEvent("PlayerTakeDamage");
