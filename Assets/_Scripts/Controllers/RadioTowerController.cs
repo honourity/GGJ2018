@@ -18,8 +18,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
-   public Transform SignalTarget { get { return _signalTarget; } }
-
    [SerializeField] private GameObject _signalPrefab = null;
    [SerializeField] private GameObject _truckPrefab = null;
    [SerializeField] private GameObject _blipBlipPrefab = null;
@@ -29,7 +27,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
-
    [SerializeField] private Transform _signalTarget;
 
    private Animator _animator;
@@ -41,6 +38,11 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private GameObject _blipBlip;
    private float _durability;
 
+
+   public Transform GetSignalTarget()
+   {
+      return _signalTarget;
+   }
 
    public void ProcessMessage()
    {
@@ -94,7 +96,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          foreach (GameObject go in _linkedReceiverObjects)
          {
             var signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
-            signal.Initialize(transform.position, _signalTarget, receiver);
+            signal.Initialize(_signalTarget.position, receiver.GetSignalTarget(), receiver);
             if (_blipBlip != null) Destroy(_blipBlip);
          }
       }
@@ -207,12 +209,11 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    void OnDrawGizmos()
    {
-      if (_linkedReceiverObjects != null && _linkedReceiverObjects.Length > 0)
+      if (_linkedReceivers != null && _linkedReceivers.Length > 0)
       {
-         foreach (GameObject go in _linkedReceiverObjects)
+         foreach (var receiver in _linkedReceivers)
          {
-            if (go != null)
-               Debug.DrawLine(transform.position, go.transform.position, Color.red);
+            if (receiver != null) Debug.DrawLine(_signalTarget.position, receiver.GetSignalTarget().position, Color.red);
          }
 
       }

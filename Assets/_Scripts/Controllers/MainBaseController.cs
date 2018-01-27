@@ -7,40 +7,39 @@ public class MainBaseController : MonoBehaviour
    [SerializeField] GameObject _signalsPrefab;
    [SerializeField] float _timeBetweenSignals;
 
-   private RadioTowerController[] _linkedReceivers;
+   private IMessageReceiver[] _linkedReceivers;
 
    private void Start()
    {
-      _linkedReceivers = new RadioTowerController[_towersToSend.Length];
+      _linkedReceivers = new IMessageReceiver[_towersToSend.Length];
 
       //Build the _linkedReceivers Array
       for (int i = 0; i < _towersToSend.Length; i++)
       {
-         _linkedReceivers[i] = _towersToSend[i].GetComponent<RadioTowerController>();
+         _linkedReceivers[i] = _towersToSend[i].GetComponent<IMessageReceiver>();
       }
-      StartCoroutine(DoStuffIGuess());
+      StartCoroutine(Transmitting());
    }
 
-   private IEnumerator DoStuffIGuess()
+   private IEnumerator Transmitting()
    {
       while (true)
       {
          yield return new WaitForSeconds(_timeBetweenSignals);
          int randIndex = Random.Range(0, _linkedReceivers.Length);
 
-         SignalController signal = Instantiate(_signalsPrefab).GetComponent<SignalController>();
-         signal.Initialize(transform.position, _linkedReceivers[randIndex].SignalTarget, _linkedReceivers[randIndex]);
+         var signal = Instantiate(_signalsPrefab).GetComponent<SignalController>();
+         signal.Initialize(transform.position, _linkedReceivers[randIndex].GetSignalTarget(), _linkedReceivers[randIndex]);
       }
-
    }
 
    void OnDrawGizmos()
    {
-      if (_towersToSend != null && _towersToSend.Length > 0)
+      if (_linkedReceivers != null && _linkedReceivers.Length > 0)
       {
-         foreach (var radio in _towersToSend)
+         foreach (var receiver in _linkedReceivers)
          {
-            if (radio != null) Debug.DrawLine(transform.position, radio.transform.position, Color.red);
+            if (receiver != null) Debug.DrawLine(transform.position, receiver.GetSignalTarget().position, Color.red);
          }
       }
    }

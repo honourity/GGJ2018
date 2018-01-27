@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &833837126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &878756050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &907470896
 GameObject:
   m_ObjectHideFlags: 0
@@ -28553,6 +28556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &1210306980
 GameObject:
   m_ObjectHideFlags: 0
@@ -28806,6 +28810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &1360850787
 GameObject:
   m_ObjectHideFlags: 0
@@ -28849,6 +28854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!212 &1360850790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29070,7 +29076,7 @@ GameObject:
   - component: {fileID: 1490538836}
   - component: {fileID: 1490538838}
   m_Layer: 0
-  m_Name: Missile Silo (LEFT)
+  m_Name: MissileSilo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29146,6 +29152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 1490538837}
 --- !u!1001 &1556047415
 Prefab:
   m_ObjectHideFlags: 0
@@ -29810,6 +29817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missilePrefab: {fileID: 1139139640833706, guid: c9008c53c60281446a349c5a2ea2bfae,
     type: 2}
+  _signalTarget: {fileID: 0}
 --- !u!1 &1986115633
 GameObject:
   m_ObjectHideFlags: 0
