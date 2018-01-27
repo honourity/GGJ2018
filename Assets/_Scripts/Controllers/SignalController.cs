@@ -4,7 +4,7 @@ public class SignalController : MonoBehaviour
 {
    private Transform _target;
    private IMessageReceiver _messageReceiver;
-   private float _desiredDistance = 0.01f;
+   [SerializeField] private float _desiredDistance = 0.01f;
    private float _speed = 2f;
    private Vector3 _diffVector;
    private Animator _animator;
@@ -14,7 +14,6 @@ public class SignalController : MonoBehaviour
       transform.position = start;
       _target = end.transform;
       _messageReceiver = receiver;
-      _diffVector = _target.position - transform.position;
       //transform.right = -_diffVector;
    }
 
@@ -27,6 +26,7 @@ public class SignalController : MonoBehaviour
    {
       if (Vector2.Distance(transform.position, _target.transform.position) > _desiredDistance)
       {
+         _diffVector = _target.position - transform.position;
          transform.Translate((_diffVector.normalized) * _speed * Time.deltaTime, Space.World);
 
          SetDirection();

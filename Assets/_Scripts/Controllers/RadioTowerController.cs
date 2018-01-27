@@ -37,6 +37,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    private GameObject _blipBlip;
    private float _durability;
+   private Animator _blipBlipAnimator;
 
 
    public Transform GetSignalTarget()
@@ -46,6 +47,9 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
+      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+      _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
+
       if (!Broken)
       {
          if (_linkedReceivers.Length > 0)
@@ -56,8 +60,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
       else
       {
-         //todo - fizzle the transmission
-         Debug.Log(gameObject.name + " got a message, broken! cant transmit!");
+         _blipBlipAnimator.Play("SignalFade");
       }
    }
 
@@ -73,9 +76,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
       {
          var receiver = _linkedReceiverObjects[i].GetComponent<IMessageReceiver>();
-
          if (receiver == null) Debug.LogError(gameObject.name + " has a GameObject in its linked receivers which isnt a MessageReceiver");
-
          _linkedReceivers[i] = receiver;
       }
    }
@@ -90,7 +91,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       if (!Broken)
       {
-         _blipBlip = Instantiate(_blipBlipPrefab, _signalTarget.position, Quaternion.identity);
+         _blipBlipAnimator.Play("BlipBlip");
          yield return new WaitForSeconds(_transmitTime);
 
          foreach (GameObject go in _linkedReceiverObjects)
@@ -99,12 +100,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
             signal.Initialize(_signalTarget.position, receiver.GetSignalTarget(), receiver);
             if (_blipBlip != null) Destroy(_blipBlip);
          }
-      }
-      else
-      {
-         //todo - fizzle the transmission
-         // like this but fizzle
-         //_blipBlip = Instantiate(_blipBlipPrefab, _signalTarget, Quaternion.identity);
       }
 
       yield return null;
