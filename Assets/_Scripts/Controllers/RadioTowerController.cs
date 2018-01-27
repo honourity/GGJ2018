@@ -114,11 +114,14 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (_durability <= 0)
          {
+            _blipBlipAnimator.Play("SignalFade");
             _needsRepair = true;
             TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
             truck.Initialize(this);
-            if (_transmitCoroutine != null) StopCoroutine(_transmitCoroutine);
-            if (_blipBlip != null) Destroy(_blipBlip);
+            if (_transmitCoroutine != null)
+               StopCoroutine(_transmitCoroutine);
+            if (_blipBlip != null)
+               Destroy(_blipBlip, 1.5f);
             _animator.SetBool("broken", true);
          }
 
