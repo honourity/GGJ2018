@@ -8,27 +8,26 @@ public class SignalController : MonoBehaviour
    private IMessageReceiver _messageReceiver;
    [SerializeField] float _desiredDistance;
    [SerializeField] float _speed;
-   private float _initialScale;
    private Vector3 _diffVector;
 
    private void Awake()
    {
-      _initialScale = transform.localScale.x;
    }
 
-   public void Initialize(Vector3 from, RadioTowerController radioTower)
+   public void Initialize(Vector3 from, Transform to)
    {
       transform.position = from;
-      _messageReceiver = radioTower.GetComponent<IMessageReceiver>();
-      _target = radioTower.transform;
+      _messageReceiver = to.GetComponent<IMessageReceiver>();
+      _target = to.transform;
       _diffVector = _target.position - transform.position;
+      transform.right = -_diffVector;
    }
 
    private void Update()
    {
       if (Vector2.Distance(transform.position, _target.transform.position) > _desiredDistance)
       {
-         transform.Translate((_diffVector) * _speed * Time.deltaTime);
+         transform.Translate((_diffVector.normalized) * _speed * Time.deltaTime, Space.World);
       }
       else
       {
