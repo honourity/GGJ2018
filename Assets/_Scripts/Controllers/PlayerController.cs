@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : UnitController
 {
    private Animator _animator;
-   private Enums.Directions _lastDirection;
+   private Enums.Directions _previousDirection = Enums.Directions.Right;
 
    public override void TakeDamage(float damage)
    {
@@ -53,14 +53,33 @@ public class PlayerController : UnitController
             break;
       }
 
-      //convert 8-way to 4-way direction for animation purposes
-      if ((int)direction >= 4)
+      //todo - attempting to make direction sticky (pressing left, then up/left should keep direction facing left)
+      // (doesnt work properly) - make it work if we have time
+      var adjustedDirection = direction;
+      Enums.Directions tempPositive = (((int)direction + 1) > 7) ? (Enums.Directions)0 : direction;
+      Enums.Directions tempNegative = (((int)direction - 1) < 0) ? (Enums.Directions)7 : direction;
+      if (_previousDirection == tempPositive)
       {
-         direction -= 4;
+         adjustedDirection = tempPositive;
+      }
+      else if (_previousDirection == tempNegative)
+      {
+         adjustedDirection = tempNegative;
+      }
+
+      if (adjustedDirection != direction)
+      {
+         _previousDirection = direction;
+      }
+
+      //convert 8-way to 4-way direction for animation purposes
+      if ((int)adjustedDirection >= 4)
+      {
+         adjustedDirection -= 4;
       }
 
       //set animation
-      _animator.SetFloat("direction", (int)direction);
+      _animator.SetFloat("direction", (int)adjustedDirection);
       _animator.SetBool("moving", true);
 
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
