@@ -771,6 +771,27 @@ Prefab:
       propertyPath: m_Name
       value: MissileSilo
       objectReference: {fileID: 0}
+    - target: {fileID: 212817966579720186, guid: 4a4c871d91ea82341ba12f10b1c5bd66,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212817966579720186, guid: 4a4c871d91ea82341ba12f10b1c5bd66,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212817966579720186, guid: 4a4c871d91ea82341ba12f10b1c5bd66,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212817966579720186, guid: 4a4c871d91ea82341ba12f10b1c5bd66,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300074, guid: 4ac20b1ea55b9cd4d9e4f0c853afaf26,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a4c871d91ea82341ba12f10b1c5bd66, type: 2}
   m_IsPrefabParent: 0
@@ -29202,6 +29223,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4648122683380568, guid: 4a4c871d91ea82341ba12f10b1c5bd66,
     type: 2}
   m_PrefabInternal: {fileID: 253960980}
+--- !u!95 &1338876781
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338876779}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f114b5b38cd4aa47b0b35656a6f861c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1351761271
 GameObject:
   m_ObjectHideFlags: 0
