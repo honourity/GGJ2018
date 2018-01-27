@@ -11,13 +11,17 @@ public class PlayerController : UnitController
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
    private Enums.Directions _previousDirection = Enums.Directions.Right;
+   private bool _invulnerable;
 
    public override void TakeDamage(float damage)
    {
-      base.TakeDamage(damage);
-      EventManager.FireEvent("PlayerTakeDamage");
-      StopCoroutine(TakingDamageCoroutine());
-      StartCoroutine(TakingDamageCoroutine());
+      if (!_invulnerable)
+      {
+         base.TakeDamage(damage);
+         EventManager.FireEvent("PlayerTakeDamage");
+         StopAllCoroutines();
+         StartCoroutine(TakingDamageCoroutine());
+      }
    }
 
    public void StopMoving()
