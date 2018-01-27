@@ -122,12 +122,12 @@ public class PlayerController : UnitController
 
    public void Ultimate()
    {
-      throw new NotImplementedException();
+      _animator.SetTrigger("ultimate");
    }
 
    public void Attack()
    {
-      throw new NotImplementedException();
+      _animator.SetTrigger("attack");
    }
 
    private void Awake()
