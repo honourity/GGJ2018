@@ -9,6 +9,7 @@ public class MissileController : MonoBehaviour
    private float _upDistance = 2f;
    private float _launchSpeed = 4f;
    private float _acceleration = 0.33f;
+   [SerializeField] private float _maxSpeed = 5f;
    private float _distanceExplode = 0.2f;
 
    private Vector3 _initialPosition;
@@ -37,6 +38,7 @@ public class MissileController : MonoBehaviour
          //fly at player
          var vectorToPlayer = (GameManager.Instance.Player.transform.position - transform.position).normalized;
          _currentSpeed += _acceleration;
+         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
          transform.position += vectorToPlayer * _currentSpeed * Time.deltaTime;
 
          //look at player

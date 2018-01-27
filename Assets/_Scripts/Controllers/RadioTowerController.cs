@@ -18,10 +18,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
-   [SerializeField] private GameObject _signalPrefab;
-   [SerializeField] private GameObject _truckPrefab;
-   [SerializeField] private GameObject _blipBlipPrefab;
-   [SerializeField] private GameObject[] _linkedReceiverObjects;
+   [SerializeField] private GameObject _signalPrefab = null;
+   [SerializeField] private GameObject _truckPrefab = null;
+   [SerializeField] private GameObject _blipBlipPrefab = null;
+   [SerializeField] private GameObject[] _linkedReceiverObjects = null;
    [SerializeField] private float _maxDurability = 3f;
    [SerializeField] private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
@@ -180,8 +180,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public IEnumerator Repair()
    {
-      SpriteRenderer sr = GetComponent<SpriteRenderer>();
-      sr.color = Color.yellow;
+      _sprite.color = Color.yellow;
 
       while (_needsRepair)
       {
@@ -189,7 +188,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
-      sr.color = Color.white;
+      _sprite.color = Color.white;
    }
 
    void OnDrawGizmos()
