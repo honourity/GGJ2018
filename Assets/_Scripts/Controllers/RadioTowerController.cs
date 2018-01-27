@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class RadioTowerController : MonoBehaviour, IMessageReceiver
 {
-   [SerializeField]
-   private GameObject[] _linkedReceiverObjects;
-
+   [SerializeField] private GameObject _truckPrefab;
+   [SerializeField] private GameObject[] _linkedReceiverObjects;
    private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
 
@@ -29,6 +28,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (receiver == null) Debug.LogError(gameObject.name + " has a GameObject in its linked receivers which isnt a MessageReceiver");
       }
+
+      //TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
+      //truck.Initialize(transform.position);
+
    }
 
    private IEnumerator Transmit(IMessageReceiver receiver)
@@ -50,7 +53,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public void TakeDamage(float amount)
    {
-
    }
 
    public void AddHealth(float amount)
