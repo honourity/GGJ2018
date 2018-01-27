@@ -27,6 +27,9 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
 
+   private Coroutine _coroutine;
+
+   private GameObject _blipBlip;
    private float _durability;
    private SpriteRenderer _sr;
 
@@ -37,7 +40,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          if (_linkedReceivers.Length > 0)
          {
             var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-            StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            _coroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
          }
       }
       else
@@ -70,13 +73,15 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    private IEnumerator Transmit(IMessageReceiver receiver)
    {
+      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
       yield return new WaitForSeconds(_transmitTime);
 
       foreach (GameObject go in _linkedReceiverObjects)
       {
-         Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
          SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
          signal.Initialize(transform.position, go.transform);
+         if (_blipBlip != null)
+            Destroy(_blipBlip);
       }
 
    }
@@ -93,6 +98,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
          truck.Initialize(this);
          _sr.color = Color.red;
+         if (_coroutine != null)
+            StopCoroutine(_coroutine);
+         if (_blipBlip != null)
+            Destroy(_blipBlip);
       }
    }
 
