@@ -8,7 +8,8 @@ public class MissileController : MonoBehaviour
    private float _damage = 1f;
    private float _upDistance = 2f;
    private float _launchSpeed = 4f;
-   private float _acceleration = 1f;
+   private float _acceleration = 0.33f;
+   private float _distanceExplode = 0.2f;
 
    private Vector3 _initialPosition;
    private bool _finishedLaunching;
@@ -41,7 +42,7 @@ public class MissileController : MonoBehaviour
          //look at player
          transform.up = vectorToPlayer;
 
-         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= 0.5f)
+         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= _distanceExplode)
          {
             Explode();
          }
