@@ -114,7 +114,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (_durability <= 0)
          {
-            _blipBlipAnimator.Play("SignalFade");
+            if (_blipBlip)
+               _blipBlipAnimator.Play("SignalFade");
             _needsRepair = true;
             TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
             truck.Initialize(this);
