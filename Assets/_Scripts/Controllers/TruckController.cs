@@ -49,7 +49,11 @@ public class TruckController : UnitController
 
          transform.Translate((_diffVector) * _speed * Time.deltaTime);
 
-         var directionValue = Mathf.RoundToInt((Vector3.Angle(Vector3.up, _diffVector) / 45f));
+         var adjustedAngle = Vector3.SignedAngle(Vector3.up, _diffVector, Vector3.back);
+         if (adjustedAngle < 0) adjustedAngle += 360f;
+
+         //force only 4-way since the way the Enums.Directions is configured, we cant move around cardinals in sequential order
+         var directionValue = Mathf.RoundToInt(adjustedAngle / 90f);
          if (directionValue == 8) directionValue = 0;
          var direction = (Enums.Directions)directionValue;
 
