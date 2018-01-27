@@ -49,7 +49,7 @@ public class TruckController : UnitController
 
          transform.Translate((_diffVector) * _speed * Time.deltaTime);
 
-         var directionValue = Mathf.RoundToInt((Vector3.Angle(_diffVector, Vector3.up) / 45f));
+         var directionValue = Mathf.RoundToInt((Vector3.Angle(Vector3.up, _diffVector) / 45f));
          if (directionValue == 8) directionValue = 0;
          var direction = (Enums.Directions)directionValue;
 

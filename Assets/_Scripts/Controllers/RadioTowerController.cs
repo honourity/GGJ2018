@@ -24,23 +24,18 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    [SerializeField] private float _maxDurability = 1f;
    [SerializeField] private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
-   [SerializeField] private float _durability;
    [SerializeField] private bool _needsRepair;
+
+   private float _durability;
 
    public void ProcessMessage()
    {
       if (!Broken)
       {
-         //Debug.Log(gameObject.name + " got a message, processing...");
-
          if (_linkedReceivers.Length > 0)
          {
             var receiverIndex = Random.Range(0, _linkedReceivers.Length);
             StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
-         }
-         else
-         {
-            //Debug.Log(gameObject.name + " got a message, but has no targets to send to");
          }
       }
       else

@@ -74,9 +74,8 @@ MonoBehaviour:
     type: 2}
   _linkedReceiverObjects:
   - {fileID: 0}
-  _maxDurability: 1
+  _maxDurability: 3
   _transmitTime: 3
-  _durability: 0
   _needsRepair: 0
 --- !u!212 &212200659051968912
 SpriteRenderer:

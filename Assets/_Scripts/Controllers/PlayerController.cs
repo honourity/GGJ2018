@@ -12,6 +12,12 @@ public class PlayerController : UnitController
    private Color _killColor = Color.red;
    [SerializeField]
    private float _maxUltimateCharge = 2f;
+   [SerializeField]
+   private float _attackDamage = 1f;
+   [SerializeField]
+   private float _attackRange = 1f;
+   [SerializeField]
+   private float _ultimateRange = 2f;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
@@ -137,15 +143,43 @@ public class PlayerController : UnitController
    {
       if (UltimateCharge == MaxUltimateCharge)
       {
+         Invulnerable = true;
          UltimateCharge = 0;
          _animator.SetTrigger("ultimate");
          EventManager.FireEvent("PlayerCharge");
+
+         var allTowers = FindObjectsOfType<RadioTowerController>();
+         foreach (var tower in allTowers)
+         {
+            if (!tower.Broken && Vector3.Distance(tower.transform.position, transform.position) < _ultimateRange)
+            {
+               tower.RemoveDurability(9001);
+            }
+         }
+
+         var allMissiles = FindObjectsOfType<MissileController>();
+         foreach (var missile in allMissiles)
+         {
+            if (Vector3.Distance(missile.transform.position, transform.position) < _ultimateRange)
+            {
+               missile.Explode();
+            }
+         }
       }
    }
 
    public void Attack()
    {
       _animator.SetTrigger("attack");
+
+      var allTowers = FindObjectsOfType<RadioTowerController>();
+      foreach (var tower in allTowers)
+      {
+         if (!tower.Broken && Vector3.Distance(tower.transform.position, transform.position) < _attackRange)
+         {
+            tower.RemoveDurability(_attackDamage);
+         }
+      }
    }
 
    private void Awake()

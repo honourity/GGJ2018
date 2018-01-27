@@ -61,7 +61,7 @@ public class MissileController : MonoBehaviour
       }
    }
 
-   private void Explode()
+   public void Explode()
    {
       GameManager.Instance.Player.TakeDamage(_damage);
       Destroy(gameObject);

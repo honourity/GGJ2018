@@ -528,6 +528,10 @@ Prefab:
       propertyPath: _linkedReceiverObjects.Array.data[0]
       value: 
       objectReference: {fileID: 780554352}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
   m_IsPrefabParent: 0
