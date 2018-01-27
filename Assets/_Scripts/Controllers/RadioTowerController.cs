@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class RadioTowerController : MonoBehaviour, IMessageReceiver
 {
-   public bool Broken { get
+   public bool Broken
+   {
+      get
       {
          if (_needsRepair && _durability < _maxDurability)
          {
@@ -16,16 +18,13 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
-   [SerializeField]
-   private GameObject[] _linkedReceiverObjects;
-
-   [SerializeField]
-   private float _maxDurability = 1f;
-   [SerializeField]
-   private float _transmitTime = 1f;
+   [SerializeField] private GameObject _truckPrefab;
+   [SerializeField] private GameObject[] _linkedReceiverObjects;
+   [SerializeField] private float _maxDurability = 1f;
+   [SerializeField] private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
-   private float _durability;
-   private bool _needsRepair;
+   [SerializeField] private float _durability;
+   [SerializeField] private bool _needsRepair;
 
    public void ProcessMessage()
    {
@@ -66,6 +65,12 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
+   private void Update()
+   {
+      if (Input.GetKeyDown("k"))
+         RemoveDurability(1);
+   }
+
    private IEnumerator Transmit(IMessageReceiver receiver)
    {
       var timer = 0f;
@@ -88,9 +93,11 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       _durability -= amount;
       if (_durability < 0) _durability = 0;
 
-      if (_durability == 0)
+      if (_durability <= 0)
       {
          _needsRepair = true;
+         TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
+         truck.Initialize(this);
       }
    }
 
@@ -99,9 +106,25 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       _durability += amount;
       if (_maxDurability < 0) _maxDurability = 0;
 
-      if (_durability == _maxDurability)
+      if (_durability >= _maxDurability)
       {
          _needsRepair = false;
       }
    }
+
+   public IEnumerator Repair()
+   {
+      SpriteRenderer sr = GetComponent<SpriteRenderer>();
+      sr.color = Color.yellow;
+
+      while (_needsRepair)
+      {
+         AddDurability(0.1f);
+         yield return new WaitForSeconds(0.15f);
+      }
+
+      sr.color = Color.black;
+
+   }
+
 }
