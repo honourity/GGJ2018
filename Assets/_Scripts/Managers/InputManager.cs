@@ -6,6 +6,10 @@ public class InputManager : MonoBehaviour
    private static InputManager _instance;
    public static InputManager Instance { get { return _instance = _instance ?? FindObjectOfType<InputManager>(); } }
 
+   #region Debug Input
+   [SerializeField] RadioTowerController _tower = null;
+   #endregion
+
    private void Update()
    {
       //capturing all input
@@ -60,6 +64,11 @@ public class InputManager : MonoBehaviour
          //force a missile launch
          var silo = FindObjectOfType<MissileSiloController>();
          silo.ProcessMessage();
+      }
+
+      if (Input.GetKeyDown(KeyCode.T))
+      {
+         _tower.ProcessMessage();
       }
       #endregion  
    }

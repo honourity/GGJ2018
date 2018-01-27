@@ -33,7 +33,7 @@ public class TruckController : UnitController
    private void Update()
    {
       Vector3 translation = _targetPosition - transform.position;
-      Debug.Log(translation.normalized);
+      //Debug.Log(translation.normalized);
 
 
    }

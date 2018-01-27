@@ -3,21 +3,57 @@ using UnityEngine;
 
 public class RadioTowerController : MonoBehaviour, IMessageReceiver
 {
-   [SerializeField] private GameObject _truckPrefab;
-   [SerializeField] private GameObject[] _linkedReceiverObjects;
+   public bool Broken { get
+      {
+         if (_needsRepair && _durability < _maxDurability)
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+   }
+
+   [SerializeField]
+   private GameObject[] _linkedReceiverObjects;
+
+   [SerializeField]
+   private float _maxDurability = 1f;
+   [SerializeField]
    private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
+   private float _durability;
+   private bool _needsRepair;
 
    public void ProcessMessage()
    {
-      Debug.Log(gameObject.name + " got a message, processing...");
+      if (!Broken)
+      {
+         Debug.Log(gameObject.name + " got a message, processing...");
 
-      var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-      StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+         if (_linkedReceivers.Length > 0)
+         {
+            var receiverIndex = Random.Range(0, _linkedReceivers.Length);
+            StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+         }
+         else
+         {
+            Debug.Log(gameObject.name + " got a message, but has no targets to send to");
+         }
+      }
+      else
+      {
+         //todo - fizzle and pop amongst wreckage
+         Debug.Log(gameObject.name + " got a message, broken! cant transmit!");
+      }
    }
 
-   private void Start()
+   private void Awake()
    {
+      _durability = _maxDurability;
+
       _linkedReceivers = new IMessageReceiver[_linkedReceiverObjects.Length];
 
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
@@ -28,10 +64,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (receiver == null) Debug.LogError(gameObject.name + " has a GameObject in its linked receivers which isnt a MessageReceiver");
       }
-
-      //TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
-      //truck.Initialize(transform.position);
-
    }
 
    private IEnumerator Transmit(IMessageReceiver receiver)
@@ -42,7 +74,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       {
          //todo - animate?!?
 
-         timer -= Time.deltaTime;
+         timer += Time.deltaTime;
          yield return new WaitForEndOfFrame();
       }
 
@@ -51,12 +83,25 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       yield return null;
    }
 
-   public void TakeDamage(float amount)
+   public void RemoveDurability(float amount)
    {
+      _durability -= amount;
+      if (_durability < 0) _durability = 0;
+
+      if (_durability == 0)
+      {
+         _needsRepair = true;
+      }
    }
 
-   public void AddHealth(float amount)
+   public void AddDurability(float amount)
    {
+      _durability += amount;
+      if (_maxDurability < 0) _maxDurability = 0;
 
+      if (_durability == _maxDurability)
+      {
+         _needsRepair = false;
+      }
    }
 }
