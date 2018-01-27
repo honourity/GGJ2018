@@ -130,10 +130,10 @@ public class PlayerController : UnitController
          _previousDirection = direction;
       }
       adjustedDirection = Helpers.Compress8to4Directions(adjustedDirection);
-      
 
       //set animation
       _animator.SetFloat("direction", (int)adjustedDirection);
+      _animator.SetInteger("direction_int", (int)adjustedDirection);
       _animator.SetBool("moving", true);
 
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
@@ -172,6 +172,10 @@ public class PlayerController : UnitController
    {
       _animator.SetTrigger("attack");
 
+   }
+
+   public void ActuallyAttack()
+   {
       var allTowers = FindObjectsOfType<RadioTowerController>();
       foreach (var tower in allTowers)
       {

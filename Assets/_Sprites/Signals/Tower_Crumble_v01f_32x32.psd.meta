@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: d2f2269bf9a67264a8204b40911a03ed
-timeCreated: 1517047753
+guid: b65737e5ee03415498fe1c156b2c875b
+timeCreated: 1517053633
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: godzilla_front_hit_v01_32x32_0
-    21300002: godzilla_front_hit_v01_32x32_1
-    21300004: godzilla_front_hit_v01_32x32_2
-    21300006: godzilla_front_hit_v01_32x32_3
+    21300000: Tower_Crumble_v01f_32x32_0
+    21300002: Tower_Crumble_v01f_32x32_1
+    21300004: Tower_Crumble_v01f_32x32_2
+    21300006: Tower_Crumble_v01f_32x32_3
+    21300008: Tower_Crumble_v01f_32x32_4
+    21300010: Tower_Crumble_v01f_32x32_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -94,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: godzilla_front_hit_v01_32x32_0
+      name: Tower_Crumble_v01f_32x32_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_front_hit_v01_32x32_1
+      name: Tower_Crumble_v01f_32x32_1
       rect:
         serializedVersion: 2
         x: 32
@@ -122,7 +124,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_front_hit_v01_32x32_2
+      name: Tower_Crumble_v01f_32x32_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tower_Crumble_v01f_32x32_3
       rect:
         serializedVersion: 2
         x: 0
@@ -136,10 +152,24 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_front_hit_v01_32x32_3
+      name: Tower_Crumble_v01f_32x32_4
       rect:
         serializedVersion: 2
         x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tower_Crumble_v01f_32x32_5
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 0
         width: 32
         height: 32

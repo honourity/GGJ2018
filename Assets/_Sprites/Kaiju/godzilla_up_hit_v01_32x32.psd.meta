@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 74cd56d70c1ddb84da148ed4a5524740
-timeCreated: 1517047656
+timeCreated: 1517049642
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,10 @@ TextureImporter:
     21300002: godzilla_back_hit_v01_32x32_1
     21300004: godzilla_back_hit_v01_32x32_2
     21300006: godzilla_back_hit_v01_32x32_3
+    21300008: godzilla_up_hit_v01_32x32_0
+    21300010: godzilla_up_hit_v01_32x32_1
+    21300012: godzilla_up_hit_v01_32x32_2
+    21300014: godzilla_up_hit_v01_32x32_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -94,57 +98,57 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: godzilla_back_hit_v01_32x32_0
+      name: godzilla_up_hit_v01_32x32_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_back_hit_v01_32x32_1
+      name: godzilla_up_hit_v01_32x32_1
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_back_hit_v01_32x32_2
+      name: godzilla_up_hit_v01_32x32_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_back_hit_v01_32x32_3
+      name: godzilla_up_hit_v01_32x32_3
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

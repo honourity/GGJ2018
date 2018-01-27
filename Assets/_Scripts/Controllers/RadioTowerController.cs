@@ -36,10 +36,13 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    private GameObject _blipBlip;
    private float _durability;
-
+   private Animator _blipBlipAnimator;
 
    public void ProcessMessage()
    {
+      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+      _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
+
       if (!Broken)
       {
          if (_linkedReceivers.Length > 0)
@@ -50,8 +53,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
       else
       {
-         //todo - fizzle the transmission
-         Debug.Log(gameObject.name + " got a message, broken! cant transmit!");
+         _blipBlipAnimator.Play("SignalFade");
       }
    }
 
@@ -83,7 +85,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       if (!Broken)
       {
-         _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         _blipBlipAnimator.Play("BlipBlip");
          yield return new WaitForSeconds(_transmitTime);
 
          foreach (GameObject go in _linkedReceiverObjects)
@@ -95,9 +97,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
       else
       {
-         //todo - fizzle the transmission
-         // like this but fizzle
-         //_blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+        
       }
 
       yield return null;
@@ -157,15 +157,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       while (timer > 0f)
       {
          var shakeOffset = new Vector3(shakeAmount, 0f, 0f);
-
          if (!positiveShake) shakeOffset = -shakeOffset;
-
          transform.position += shakeOffset;
-
          shakeAmount *= 0.5f;
-
          positiveShake = !positiveShake;
-
          timer -= Time.deltaTime;
          yield return new WaitForSeconds(0.005f);
       }

@@ -1,13 +1,17 @@
 fileFormatVersion: 2
-guid: c180974ae7d9062469e965a6a7458a59
-timeCreated: 1517049595
+guid: d2f2269bf9a67264a8204b40911a03ed
+timeCreated: 1517049627
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: godzilla_left_hit_v01_32x32_0
-    21300002: godzilla_left_hit_v01_32x32_1
-    21300004: godzilla_left_hit_v01_32x32_2
-    21300006: godzilla_left_hit_v01_32x32_3
+    21300000: godzilla_front_hit_v01_32x32_0
+    21300002: godzilla_front_hit_v01_32x32_1
+    21300004: godzilla_front_hit_v01_32x32_2
+    21300006: godzilla_front_hit_v01_32x32_3
+    21300008: godzilla_down_hit_v01_32x32_0
+    21300010: godzilla_down_hit_v01_32x32_1
+    21300012: godzilla_down_hit_v01_32x32_2
+    21300014: godzilla_down_hit_v01_32x32_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -94,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: godzilla_left_hit_v01_32x32_0
+      name: godzilla_down_hit_v01_32x32_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,7 +112,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_left_hit_v01_32x32_1
+      name: godzilla_down_hit_v01_32x32_1
       rect:
         serializedVersion: 2
         x: 32
@@ -122,7 +126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_left_hit_v01_32x32_2
+      name: godzilla_down_hit_v01_32x32_2
       rect:
         serializedVersion: 2
         x: 0
@@ -136,7 +140,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: godzilla_left_hit_v01_32x32_3
+      name: godzilla_down_hit_v01_32x32_3
       rect:
         serializedVersion: 2
         x: 32
