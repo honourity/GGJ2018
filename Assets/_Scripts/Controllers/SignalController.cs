@@ -4,7 +4,7 @@ public class SignalController : MonoBehaviour
 {
    private Transform _target;
    private IMessageReceiver _messageReceiver;
-   private float _desiredDistance = 0.5f;
+   private float _desiredDistance = 0.01f;
    private float _speed = 2f;
    private Vector3 _diffVector;
 
