@@ -29038,6 +29038,48 @@ MonoBehaviour:
   _maxZoom: 0
   _target: {fileID: 0}
   _levelBounds: {fileID: 1210306983}
+--- !u!1001 &1488320409
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372424752069176, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8a52721ecca87734cb61292913c8ef8a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1490538835
 GameObject:
   m_ObjectHideFlags: 0
@@ -29699,8 +29741,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towersToSend:
   - {fileID: 431066839}
-  - {fileID: 706387899}
-  - {fileID: 401241717}
   _signalsPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
     type: 2}
   _timeBetweenSignals: 5
