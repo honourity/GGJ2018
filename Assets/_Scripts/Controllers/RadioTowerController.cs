@@ -28,6 +28,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
    [SerializeField] private Transform _signalTarget;
+   [SerializeField] private GameObject _repairSpriteGameObject = null;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
@@ -47,20 +48,23 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
-      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
-      _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
+      if (!_blipBlip)
+      {
+         _blipBlip = Instantiate(_blipBlipPrefab, _signalTarget.position, Quaternion.identity);
+         _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
 
-      if (!Broken)
-      {
-         if (_linkedReceivers.Length > 0)
+         if (!Broken)
          {
-            var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-            _transmitCoroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            if (_linkedReceivers.Length > 0)
+            {
+               var receiverIndex = Random.Range(0, _linkedReceivers.Length);
+               _transmitCoroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            }
          }
-      }
-      else
-      {
-         _blipBlipAnimator.Play("SignalFade");
+         else
+         {
+            _blipBlipAnimator.Play("SignalFade");
+         }
       }
    }
 
@@ -101,6 +105,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
             if (_blipBlip != null) Destroy(_blipBlip);
          }
       }
+      else
+      {
+         if (_blipBlip != null) Destroy(_blipBlip);
+      }
 
       yield return null;
    }
@@ -114,15 +122,12 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (_durability <= 0)
          {
-            if (_blipBlip)
-               _blipBlipAnimator.Play("SignalFade");
+            if (_blipBlip) _blipBlipAnimator.Play("SignalFade");
             _needsRepair = true;
             TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
             truck.Initialize(this);
-            if (_transmitCoroutine != null)
-               StopCoroutine(_transmitCoroutine);
-            if (_blipBlip != null)
-               Destroy(_blipBlip, 1.5f);
+            if (_transmitCoroutine != null) StopCoroutine(_transmitCoroutine);
+            if (_blipBlip != null) Destroy(_blipBlip, 1.5f);
             _animator.SetBool("broken", true);
          }
 
@@ -195,6 +200,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    public IEnumerator Repair()
    {
       _animator.SetBool("repairing", true);
+      _repairSpriteGameObject.SetActive(true);
 
       while (_needsRepair)
       {
@@ -204,8 +210,11 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
+      _repairSpriteGameObject.SetActive(false);
       _animator.SetBool("repairing", false);
       _animator.SetBool("broken", false);
+
+      yield return null;
    }
 
    void OnDrawGizmos()

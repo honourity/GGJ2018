@@ -6,6 +6,7 @@ public class MainBaseController : MonoBehaviour
    [SerializeField] private GameObject[] _towersToSend;
    [SerializeField] GameObject _signalsPrefab;
    [SerializeField] float _timeBetweenSignals;
+   [SerializeField] Transform _signalSource;
 
    private IMessageReceiver[] _linkedReceivers;
 
@@ -29,7 +30,7 @@ public class MainBaseController : MonoBehaviour
          int randIndex = Random.Range(0, _linkedReceivers.Length);
 
          var signal = Instantiate(_signalsPrefab).GetComponent<SignalController>();
-         signal.Initialize(transform.position, _linkedReceivers[randIndex].GetSignalTarget(), _linkedReceivers[randIndex]);
+         signal.Initialize(_signalSource.position, _linkedReceivers[randIndex].GetSignalTarget(), _linkedReceivers[randIndex]);
       }
    }
 
@@ -39,7 +40,7 @@ public class MainBaseController : MonoBehaviour
       {
          foreach (var receiver in _linkedReceivers)
          {
-            if (receiver != null) Debug.DrawLine(transform.position, receiver.GetSignalTarget().position, Color.red);
+            if (receiver != null) Debug.DrawLine(_signalSource.position, receiver.GetSignalTarget().position, Color.red);
          }
       }
    }

@@ -6,6 +6,10 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
    private GameObject _missilePrefab;
    [SerializeField]
    private Transform _signalTarget;
+   [SerializeField]
+   private Transform _missileSpawnPoint;
+
+   private Animator _animator;
 
    public Transform GetSignalTarget()
    {
@@ -14,8 +18,16 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
-      Instantiate(_missilePrefab, transform.position, Quaternion.identity, null);
+      _animator.SetTrigger("Launch");
+   }
 
-      Debug.Log("Missile launch detected from: " + gameObject.name);
+   private void Awake()
+   {
+      _animator = GetComponent<Animator>();
+   }
+
+   public void CreateMissile()
+   {
+      Instantiate(_missilePrefab, _missileSpawnPoint.position, Quaternion.identity, null);
    }
 }
