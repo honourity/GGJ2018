@@ -18,6 +18,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
+   [SerializeField] private GameObject _signalPrefab;
    [SerializeField] private GameObject _truckPrefab;
    [SerializeField] private GameObject[] _linkedReceiverObjects;
    [SerializeField] private float _maxDurability = 1f;
@@ -30,7 +31,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       if (!Broken)
       {
-         Debug.Log(gameObject.name + " got a message, processing...");
+         //Debug.Log(gameObject.name + " got a message, processing...");
 
          if (_linkedReceivers.Length > 0)
          {
@@ -39,7 +40,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          }
          else
          {
-            Debug.Log(gameObject.name + " got a message, but has no targets to send to");
+            //Debug.Log(gameObject.name + " got a message, but has no targets to send to");
          }
       }
       else
@@ -57,7 +58,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
       {
          var receiver = _linkedReceiverObjects[i].GetComponent<IMessageReceiver>();
-
          _linkedReceivers[i] = receiver;
 
          if (receiver == null) Debug.LogError(gameObject.name + " has a GameObject in its linked receivers which isnt a MessageReceiver");
@@ -72,19 +72,14 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    private IEnumerator Transmit(IMessageReceiver receiver)
    {
-      var timer = 0f;
+      yield return new WaitForSeconds(_transmitTime);
 
-      while (timer < _transmitTime)
+      foreach (GameObject go in _linkedReceiverObjects)
       {
-         //todo - animate?!?
-
-         timer += Time.deltaTime;
-         yield return new WaitForEndOfFrame();
+         SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
+         signal.Initialize(transform.position, go.transform);
       }
 
-      receiver.ProcessMessage();
-
-      yield return null;
    }
 
    public void RemoveDurability(float amount)
@@ -131,7 +126,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       {
          foreach (GameObject go in _linkedReceiverObjects)
          {
-            Debug.DrawLine(transform.position, go.transform.position, Color.red);
+            if (go != null)
+               Debug.DrawLine(transform.position, go.transform.position, Color.red);
          }
 
       }

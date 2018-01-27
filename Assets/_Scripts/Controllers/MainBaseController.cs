@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class MainBaseController : MonoBehaviour
 {
-   [SerializeField] private RadioTowerController[] _towersToSend;
+   [SerializeField] private Transform[] _towersToSend;
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] GameObject _signalsPrefab;
+
+   [SerializeField] float _timeBetweenSignals;
 
    // Use this for initialization
    void Start()
    {
-      SignalController signals = Instantiate(_signalsPrefab).GetComponent<SignalController>();
       _linkedReceivers = new IMessageReceiver[_towersToSend.Length];
 
       //Build the _linkedReceivers Array
-
-      for (int i = 0; i < _towersToSend.Length; i++)
-      {
-         _linkedReceivers[i] = _towersToSend[i].GetComponent<IMessageReceiver>();
-      }
-
-
-      signals.Initialize(transform.position, _towersToSend[0]);
+      //for (int i = 0; i < _towersToSend.Length; i++)
+      //{
+      //   _linkedReceivers[i] = _towersToSend[i].GetComponent<IMessageReceiver>();
+      //}
+      StartCoroutine(DoStuffIGuess());
    }
 
-   // Update is called once per frame
-   void Update()
+   private IEnumerator DoStuffIGuess()
    {
+      while (true)
+      {
+         yield return new WaitForSeconds(_timeBetweenSignals);
+         int randIndex = Random.Range(0, _towersToSend.Length);
+
+         SignalController signal = Instantiate(_signalsPrefab).GetComponent<SignalController>();
+         signal.Initialize(transform.position, _towersToSend[randIndex]);
+      }
 
    }
 
@@ -35,10 +40,10 @@ public class MainBaseController : MonoBehaviour
    {
       if (_towersToSend != null && _towersToSend.Length > 0)
       {
-         foreach (RadioTowerController radio in _towersToSend)
+         foreach (Transform radio in _towersToSend)
          {
             if (radio != null)
-               Debug.DrawLine(transform.position, radio.transform.position, Color.red);
+               Debug.DrawLine(transform.position, radio.position, Color.red);
          }
       }
    }

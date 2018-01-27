@@ -68,12 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b3470b984af4344b9798fd8016cdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _signalPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
+    type: 2}
   _truckPrefab: {fileID: 1741038353576640, guid: d92adc57782f4b74fa444c4a2ea9ea0b,
     type: 2}
   _linkedReceiverObjects:
   - {fileID: 0}
   _maxDurability: 1
-  _transmitTime: 1
+  _transmitTime: 3
   _durability: 0
   _needsRepair: 0
 --- !u!212 &212200659051968912
