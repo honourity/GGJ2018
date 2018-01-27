@@ -28,6 +28,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
    [SerializeField] private Transform _signalTarget;
+   [SerializeField] private GameObject _repairSpriteGameObject = null;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
@@ -198,6 +199,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    public IEnumerator Repair()
    {
       _animator.SetBool("repairing", true);
+      _repairSpriteGameObject.SetActive(true);
 
       while (_needsRepair)
       {
@@ -207,6 +209,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
+      _repairSpriteGameObject.SetActive(false);
       _animator.SetBool("repairing", false);
       _animator.SetBool("broken", false);
    }
