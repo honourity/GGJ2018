@@ -143,6 +143,7 @@ public class PlayerController : UnitController
       {
          UltimateCharge = 0;
          _animator.SetTrigger("ultimate");
+         EventManager.FireEvent("PlayerCharge");
       }
    }
 
@@ -166,7 +167,7 @@ public class PlayerController : UnitController
       {
          UltimateCharge += Time.deltaTime;
          if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
-         EventManager.FireEvent("PlayerUltimateCharge");
+         EventManager.FireEvent("PlayerCharge");
       }
    }
 }
