@@ -51,6 +51,10 @@ public class InputManager : MonoBehaviour
       {
          GameManager.Instance.Player.Move(Enums.Directions.Left);
       }
+      else
+      {
+         GameManager.Instance.Player.StopMoving();
+      }
 
       //actions
       if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.Player.Jump();
