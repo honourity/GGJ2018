@@ -65,7 +65,7 @@ public class PlayerController : UnitController
             translation = Vector3.up + Vector3.right;
             break;
          case Enums.Directions.Right:
-            
+
             translation = Vector3.right;
             break;
          case Enums.Directions.DownRight:
@@ -132,6 +132,8 @@ public class PlayerController : UnitController
 
    private void Awake()
    {
+      Health = MaxHealth;
+
       _animator = GetComponentInChildren<Animator>();
       _sprite = GetComponentInChildren<SpriteRenderer>();
       _originalSpriteColor = _sprite.color;
