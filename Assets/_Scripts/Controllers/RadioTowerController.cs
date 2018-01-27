@@ -50,7 +50,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       if (!_blipBlip)
       {
-         _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         _blipBlip = Instantiate(_blipBlipPrefab, _signalTarget.position, Quaternion.identity);
          _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
 
          if (!Broken)
@@ -105,6 +105,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
             if (_blipBlip != null) Destroy(_blipBlip);
          }
       }
+      else
+      {
+         if (_blipBlip != null) Destroy(_blipBlip);
+      }
 
       yield return null;
    }
@@ -118,15 +122,12 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
          if (_durability <= 0)
          {
-            if (_blipBlip)
-               _blipBlipAnimator.Play("SignalFade");
+            if (_blipBlip) _blipBlipAnimator.Play("SignalFade");
             _needsRepair = true;
             TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
             truck.Initialize(this);
-            if (_transmitCoroutine != null)
-               StopCoroutine(_transmitCoroutine);
-            if (_blipBlip != null)
-               Destroy(_blipBlip, 1.5f);
+            if (_transmitCoroutine != null) StopCoroutine(_transmitCoroutine);
+            if (_blipBlip != null) Destroy(_blipBlip, 1.5f);
             _animator.SetBool("broken", true);
          }
 
@@ -212,6 +213,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       _repairSpriteGameObject.SetActive(false);
       _animator.SetBool("repairing", false);
       _animator.SetBool("broken", false);
+
+      yield return null;
    }
 
    void OnDrawGizmos()
