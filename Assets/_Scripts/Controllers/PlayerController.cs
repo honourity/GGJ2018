@@ -13,6 +13,10 @@ public class PlayerController : UnitController
    private Color _originalSpriteColor;
    private Enums.Directions _previousDirection = Enums.Directions.Right;
 
+   [SerializeField] private float _maxUltimateCharge = 2f;
+   public float MaxUltimateCharge { get { return _maxUltimateCharge; } }
+   public float UltimateCharge { get; private set; }
+
    public override void TakeDamage(float damage)
    {
       if (!Invulnerable)
@@ -122,7 +126,11 @@ public class PlayerController : UnitController
 
    public void Ultimate()
    {
-      _animator.SetTrigger("ultimate");
+      if (UltimateCharge == MaxUltimateCharge)
+      {
+         UltimateCharge = 0;
+         _animator.SetTrigger("ultimate");
+      }
    }
 
    public void Attack()
@@ -137,5 +145,15 @@ public class PlayerController : UnitController
       _animator = GetComponentInChildren<Animator>();
       _sprite = GetComponentInChildren<SpriteRenderer>();
       _originalSpriteColor = _sprite.color;
+   }
+
+   private void OnTriggerStay2D(Collider2D collision)
+   {
+      if (collision.CompareTag("RadioTower"))
+      {
+         UltimateCharge += Time.deltaTime;
+         if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
+         EventManager.FireEvent("PlayerUltimateCharge");
+      }
    }
 }
