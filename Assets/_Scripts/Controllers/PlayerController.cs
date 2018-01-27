@@ -1,20 +1,51 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : UnitController
 {
+   [SerializeField]
+   private Color _killColor = Color.red;
+
    private Animator _animator;
+   private SpriteRenderer _sprite;
+   private Color _originalSpriteColor;
    private Enums.Directions _previousDirection = Enums.Directions.Right;
 
    public override void TakeDamage(float damage)
    {
       base.TakeDamage(damage);
       EventManager.FireEvent("PlayerTakeDamage");
+      StopCoroutine(TakingDamageCoroutine());
+      StartCoroutine(TakingDamageCoroutine());
    }
 
    public void StopMoving()
    {
       _animator.SetBool("moving", false);
+   }
+
+   private IEnumerator TakingDamageCoroutine()
+   {
+      InputManager.Instance.InputLocked = true;
+
+      var colorFrame = true;
+      var timer = 0.05f;
+
+      while (timer > 0f)
+      {
+         _sprite.color = colorFrame ? _killColor : _originalSpriteColor;
+         colorFrame = !colorFrame;
+
+         timer -= Time.deltaTime;
+         yield return new WaitForSeconds(0.025f);
+      }
+
+      _sprite.color = _originalSpriteColor;
+
+      InputManager.Instance.InputLocked = false;
+
+      yield return null;
    }
 
    public void Move(Enums.Directions direction)
@@ -85,7 +116,7 @@ public class PlayerController : UnitController
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
 
-   public void Jump()
+   public void Ultimate()
    {
       throw new NotImplementedException();
    }
@@ -95,13 +126,10 @@ public class PlayerController : UnitController
       throw new NotImplementedException();
    }
 
-   public void Ultimate()
-   {
-      throw new NotImplementedException();
-   }
-
    private void Awake()
    {
       _animator = GetComponentInChildren<Animator>();
+      _sprite = GetComponentInChildren<SpriteRenderer>();
+      _originalSpriteColor = _sprite.color;
    }
 }
