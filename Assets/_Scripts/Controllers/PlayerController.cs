@@ -4,18 +4,19 @@ using UnityEngine;
 public class PlayerController : UnitController
 {
    public bool Invulnerable { get; set; }
+   public bool Dead { get; private set; }
+   public float MaxUltimateCharge { get { return _maxUltimateCharge; } }
+   public float UltimateCharge { get; private set; }
 
    [SerializeField]
    private Color _killColor = Color.red;
+   [SerializeField]
+   private float _maxUltimateCharge = 2f;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
    private Enums.Directions _previousDirection = Enums.Directions.Right;
-
-   [SerializeField] private float _maxUltimateCharge = 2f;
-   public float MaxUltimateCharge { get { return _maxUltimateCharge; } }
-   public float UltimateCharge { get; private set; }
 
    public override void TakeDamage(float damage)
    {
@@ -26,6 +27,13 @@ public class PlayerController : UnitController
          StopAllCoroutines();
          StartCoroutine(TakingDamageCoroutine());
       }
+   }
+
+   private void Die()
+   {
+      Dead = true;
+      Invulnerable = true;
+      _animator.SetTrigger("die");
    }
 
    public void StopMoving()
@@ -40,6 +48,8 @@ public class PlayerController : UnitController
       var colorFrame = true;
       var timer = 0.05f;
 
+      if (Health <= 0) Die();
+
       while (timer > 0f)
       {
          _sprite.color = colorFrame ? _killColor : _originalSpriteColor;
@@ -51,7 +61,10 @@ public class PlayerController : UnitController
 
       _sprite.color = _originalSpriteColor;
 
-      InputManager.Instance.InputLocked = false;
+      if (!Dead)
+      {
+         InputManager.Instance.InputLocked = false;
+      }
 
       yield return null;
    }
