@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4609082992324974}
   m_Layer: 0
-  m_Name: Signal Blip Blip Position
+  m_Name: SignalTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213119512185426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.503, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4832, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4119958642359050}
@@ -127,6 +127,7 @@ MonoBehaviour:
   _transmitTime: 3
   _needsRepair: 0
   _DurabilityLossBlinkColor: {r: 1, g: 0, b: 0, a: 1}
+  _signalTarget: {fileID: 4609082992324974}
 --- !u!212 &212200659051968912
 SpriteRenderer:
   m_ObjectHideFlags: 1

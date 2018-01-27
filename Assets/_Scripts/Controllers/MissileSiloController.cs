@@ -4,6 +4,13 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
 {
    [SerializeField]
    private GameObject _missilePrefab;
+   [SerializeField]
+   private Transform _signalTarget;
+
+   public Transform GetSignalTarget()
+   {
+      return _signalTarget;
+   }
 
    public void ProcessMessage()
    {

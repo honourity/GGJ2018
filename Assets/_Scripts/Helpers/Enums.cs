@@ -1,6 +1,6 @@
 ﻿public class Enums
 {
-   public enum Directions
+   public enum Directions4WayCompressing
    {
       Up,
       Right,
@@ -9,6 +9,18 @@
       UpRight,
       DownRight,
       DownLeft,
+      UpLeft,
+   }
+
+   public enum Directions8Way
+   {
+      Up,
+      UpRight,
+      Right,
+      DownRight,
+      Down,
+      DownLeft,
+      Left,
       UpLeft,
    }
 }

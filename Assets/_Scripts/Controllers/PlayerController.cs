@@ -22,7 +22,7 @@ public class PlayerController : UnitController
    private Animator _animator;
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
-   private Enums.Directions _previousDirection = Enums.Directions.Right;
+   private Enums.Directions4WayCompressing _previousDirection = Enums.Directions4WayCompressing.Right;
 
    public override void TakeDamage(float damage)
    {
@@ -75,35 +75,35 @@ public class PlayerController : UnitController
       yield return null;
    }
 
-   public void Move(Enums.Directions direction)
+   public void Move(Enums.Directions4WayCompressing direction)
    {
       Vector3 translation = Vector3.zero;
 
       switch (direction)
       {
-         case Enums.Directions.Up:
+         case Enums.Directions4WayCompressing.Up:
             translation = Vector3.up;
             break;
-         case Enums.Directions.UpRight:
+         case Enums.Directions4WayCompressing.UpRight:
             translation = Vector3.up + Vector3.right;
             break;
-         case Enums.Directions.Right:
+         case Enums.Directions4WayCompressing.Right:
 
             translation = Vector3.right;
             break;
-         case Enums.Directions.DownRight:
+         case Enums.Directions4WayCompressing.DownRight:
             translation = Vector3.down + Vector3.right;
             break;
-         case Enums.Directions.Down:
+         case Enums.Directions4WayCompressing.Down:
             translation = Vector3.down;
             break;
-         case Enums.Directions.DownLeft:
+         case Enums.Directions4WayCompressing.DownLeft:
             translation = Vector3.down + Vector3.left;
             break;
-         case Enums.Directions.Left:
+         case Enums.Directions4WayCompressing.Left:
             translation = Vector3.left;
             break;
-         case Enums.Directions.UpLeft:
+         case Enums.Directions4WayCompressing.UpLeft:
             translation = Vector3.up + Vector3.left;
             break;
          default:
@@ -114,8 +114,8 @@ public class PlayerController : UnitController
       //todo - attempting to make direction sticky (pressing left, then up/left should keep direction facing left)
       // (doesnt work properly) - make it work if we have time
       var adjustedDirection = direction;
-      Enums.Directions tempPositive = (((int)direction + 1) > 7) ? (Enums.Directions)0 : direction;
-      Enums.Directions tempNegative = (((int)direction - 1) < 0) ? (Enums.Directions)7 : direction;
+      Enums.Directions4WayCompressing tempPositive = (((int)direction + 1) > 7) ? (Enums.Directions4WayCompressing)0 : direction;
+      Enums.Directions4WayCompressing tempNegative = (((int)direction - 1) < 0) ? (Enums.Directions4WayCompressing)7 : direction;
       if (_previousDirection == tempPositive)
       {
          adjustedDirection = tempPositive;

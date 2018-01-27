@@ -25,35 +25,35 @@ public class InputManager : MonoBehaviour
          //movement
          if (w && d)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.UpRight);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpRight);
          }
          else if (s && d)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.DownRight);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownRight);
          }
          else if (s && a)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.DownLeft);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownLeft);
          }
          else if (a && w)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.UpLeft);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpLeft);
          }
          else if (w)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.Up);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Up);
          }
          else if (d)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.Right);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Right);
          }
          else if (s)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.Down);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Down);
          }
          else if (a)
          {
-            GameManager.Instance.Player.Move(Enums.Directions.Left);
+            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Left);
          }
          else
          {

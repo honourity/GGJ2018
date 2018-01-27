@@ -55,7 +55,7 @@ public class TruckController : UnitController
          //force only 4-way since the way the Enums.Directions is configured, we cant move around cardinals in sequential order
          var directionValue = Mathf.RoundToInt(adjustedAngle / 90f);
          if (directionValue == 8) directionValue = 0;
-         var direction = (Enums.Directions)directionValue;
+         var direction = (Enums.Directions4WayCompressing)directionValue;
 
          //compressing 8way to 4way directions
          var adjustedDirection = Helpers.Compress8to4Directions(direction);
