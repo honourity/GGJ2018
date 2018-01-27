@@ -123,12 +123,8 @@ public class PlayerController : UnitController
       {
          _previousDirection = direction;
       }
-
-      //convert 8-way to 4-way direction for animation purposes
-      if ((int)adjustedDirection >= 4)
-      {
-         adjustedDirection -= 4;
-      }
+      adjustedDirection = Helpers.Compress8to4Directions(adjustedDirection);
+      
 
       //set animation
       _animator.SetFloat("direction", (int)adjustedDirection);
