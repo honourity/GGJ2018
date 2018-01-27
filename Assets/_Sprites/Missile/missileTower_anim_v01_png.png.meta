@@ -1,47 +1,47 @@
 fileFormatVersion: 2
-guid: 4ac20b1ea55b9cd4d9e4f0c853afaf26
-timeCreated: 1517066361
+guid: 445da646a1c6dce4c90e6d6bbc524740
+timeCreated: 1517070419
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: missileTower_anim_v01_64x128_0
-    21300002: missileTower_anim_v01_64x128_1
-    21300004: missileTower_anim_v01_64x128_2
-    21300006: missileTower_anim_v01_64x128_3
-    21300008: missileTower_anim_v01_64x128_4
-    21300010: missileTower_anim_v01_64x128_5
-    21300012: missileTower_anim_v01_64x128_6
-    21300014: missileTower_anim_v01_64x128_7
-    21300016: missileTower_anim_v01_64x128_8
-    21300018: missileTower_anim_v01_64x128_9
-    21300020: missileTower_anim_v01_64x128_10
-    21300022: missileTower_anim_v01_64x128_11
-    21300024: missileTower_anim_v01_64x128_12
-    21300026: missileTower_anim_v01_64x128_13
-    21300028: missileTower_anim_v01_64x128_14
-    21300030: missileTower_anim_v01_64x128_15
-    21300032: missileTower_anim_v01_64x128_16
-    21300034: missileTower_anim_v01_64x128_17
-    21300036: missileTower_anim_v01_64x128_18
-    21300038: missileTower_anim_v01_64x128_19
-    21300040: missileTower_anim_v01_64x128_20
-    21300042: missileTower_anim_v01_64x128_21
-    21300044: missileTower_anim_v01_64x128_22
-    21300046: missileTower_anim_v01_64x128_23
-    21300048: missileTower_anim_v01_64x128_24
-    21300050: missileTower_anim_v01_64x128_25
-    21300052: missileTower_anim_v01_64x128_26
-    21300054: missileTower_anim_v01_64x128_27
-    21300056: missileTower_anim_v01_64x128_28
-    21300058: missileTower_anim_v01_64x128_29
-    21300060: missileTower_anim_v01_64x128_30
-    21300062: missileTower_anim_v01_64x128_31
-    21300064: missileTower_anim_v01_64x128_32
-    21300066: missileTower_anim_v01_64x128_33
-    21300068: missileTower_anim_v01_64x128_34
-    21300070: missileTower_anim_v01_64x128_35
-    21300072: missileTower_anim_v01_64x128_36
-    21300074: missileTower_anim_v01_64x128_37
+    21300000: missileTower_anim_v01_png_0
+    21300002: missileTower_anim_v01_png_1
+    21300004: missileTower_anim_v01_png_2
+    21300006: missileTower_anim_v01_png_3
+    21300008: missileTower_anim_v01_png_4
+    21300010: missileTower_anim_v01_png_5
+    21300012: missileTower_anim_v01_png_6
+    21300014: missileTower_anim_v01_png_7
+    21300016: missileTower_anim_v01_png_8
+    21300018: missileTower_anim_v01_png_9
+    21300020: missileTower_anim_v01_png_10
+    21300022: missileTower_anim_v01_png_11
+    21300024: missileTower_anim_v01_png_12
+    21300026: missileTower_anim_v01_png_13
+    21300028: missileTower_anim_v01_png_14
+    21300030: missileTower_anim_v01_png_15
+    21300032: missileTower_anim_v01_png_16
+    21300034: missileTower_anim_v01_png_17
+    21300036: missileTower_anim_v01_png_18
+    21300038: missileTower_anim_v01_png_19
+    21300040: missileTower_anim_v01_png_20
+    21300042: missileTower_anim_v01_png_21
+    21300044: missileTower_anim_v01_png_22
+    21300046: missileTower_anim_v01_png_23
+    21300048: missileTower_anim_v01_png_24
+    21300050: missileTower_anim_v01_png_25
+    21300052: missileTower_anim_v01_png_26
+    21300054: missileTower_anim_v01_png_27
+    21300056: missileTower_anim_v01_png_28
+    21300058: missileTower_anim_v01_png_29
+    21300060: missileTower_anim_v01_png_30
+    21300062: missileTower_anim_v01_png_31
+    21300064: missileTower_anim_v01_png_32
+    21300066: missileTower_anim_v01_png_33
+    21300068: missileTower_anim_v01_png_34
+    21300070: missileTower_anim_v01_png_35
+    21300072: missileTower_anim_v01_png_36
+    21300074: missileTower_anim_v01_png_37
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,8 +81,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 0
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 32
   alphaUsage: 1
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_0
+      name: missileTower_anim_v01_png_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_1
+      name: missileTower_anim_v01_png_1
       rect:
         serializedVersion: 2
         x: 64
@@ -156,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_2
+      name: missileTower_anim_v01_png_2
       rect:
         serializedVersion: 2
         x: 128
@@ -170,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_3
+      name: missileTower_anim_v01_png_3
       rect:
         serializedVersion: 2
         x: 192
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_4
+      name: missileTower_anim_v01_png_4
       rect:
         serializedVersion: 2
         x: 256
@@ -198,7 +198,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_5
+      name: missileTower_anim_v01_png_5
       rect:
         serializedVersion: 2
         x: 320
@@ -212,7 +212,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_6
+      name: missileTower_anim_v01_png_6
       rect:
         serializedVersion: 2
         x: 384
@@ -226,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_7
+      name: missileTower_anim_v01_png_7
       rect:
         serializedVersion: 2
         x: 0
@@ -240,7 +240,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_8
+      name: missileTower_anim_v01_png_8
       rect:
         serializedVersion: 2
         x: 64
@@ -254,7 +254,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_9
+      name: missileTower_anim_v01_png_9
       rect:
         serializedVersion: 2
         x: 128
@@ -268,7 +268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_10
+      name: missileTower_anim_v01_png_10
       rect:
         serializedVersion: 2
         x: 192
@@ -282,7 +282,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_11
+      name: missileTower_anim_v01_png_11
       rect:
         serializedVersion: 2
         x: 256
@@ -296,7 +296,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_12
+      name: missileTower_anim_v01_png_12
       rect:
         serializedVersion: 2
         x: 320
@@ -310,7 +310,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_13
+      name: missileTower_anim_v01_png_13
       rect:
         serializedVersion: 2
         x: 384
@@ -324,7 +324,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_14
+      name: missileTower_anim_v01_png_14
       rect:
         serializedVersion: 2
         x: 0
@@ -338,7 +338,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_15
+      name: missileTower_anim_v01_png_15
       rect:
         serializedVersion: 2
         x: 64
@@ -352,7 +352,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_16
+      name: missileTower_anim_v01_png_16
       rect:
         serializedVersion: 2
         x: 128
@@ -366,7 +366,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_17
+      name: missileTower_anim_v01_png_17
       rect:
         serializedVersion: 2
         x: 192
@@ -380,7 +380,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_18
+      name: missileTower_anim_v01_png_18
       rect:
         serializedVersion: 2
         x: 256
@@ -394,7 +394,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_19
+      name: missileTower_anim_v01_png_19
       rect:
         serializedVersion: 2
         x: 320
@@ -408,7 +408,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_20
+      name: missileTower_anim_v01_png_20
       rect:
         serializedVersion: 2
         x: 384
@@ -422,7 +422,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_21
+      name: missileTower_anim_v01_png_21
       rect:
         serializedVersion: 2
         x: 0
@@ -436,7 +436,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_22
+      name: missileTower_anim_v01_png_22
       rect:
         serializedVersion: 2
         x: 64
@@ -450,7 +450,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_23
+      name: missileTower_anim_v01_png_23
       rect:
         serializedVersion: 2
         x: 128
@@ -464,7 +464,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_24
+      name: missileTower_anim_v01_png_24
       rect:
         serializedVersion: 2
         x: 192
@@ -478,7 +478,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_25
+      name: missileTower_anim_v01_png_25
       rect:
         serializedVersion: 2
         x: 256
@@ -492,7 +492,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_26
+      name: missileTower_anim_v01_png_26
       rect:
         serializedVersion: 2
         x: 320
@@ -506,7 +506,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_27
+      name: missileTower_anim_v01_png_27
       rect:
         serializedVersion: 2
         x: 384
@@ -520,7 +520,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_28
+      name: missileTower_anim_v01_png_28
       rect:
         serializedVersion: 2
         x: 0
@@ -534,7 +534,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_29
+      name: missileTower_anim_v01_png_29
       rect:
         serializedVersion: 2
         x: 64
@@ -548,7 +548,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_30
+      name: missileTower_anim_v01_png_30
       rect:
         serializedVersion: 2
         x: 128
@@ -562,7 +562,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_31
+      name: missileTower_anim_v01_png_31
       rect:
         serializedVersion: 2
         x: 192
@@ -576,7 +576,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_32
+      name: missileTower_anim_v01_png_32
       rect:
         serializedVersion: 2
         x: 256
@@ -590,7 +590,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_33
+      name: missileTower_anim_v01_png_33
       rect:
         serializedVersion: 2
         x: 320
@@ -604,7 +604,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_34
+      name: missileTower_anim_v01_png_34
       rect:
         serializedVersion: 2
         x: 384
@@ -618,7 +618,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_35
+      name: missileTower_anim_v01_png_35
       rect:
         serializedVersion: 2
         x: 0
@@ -632,7 +632,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_36
+      name: missileTower_anim_v01_png_36
       rect:
         serializedVersion: 2
         x: 64
@@ -646,7 +646,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: missileTower_anim_v01_64x128_37
+      name: missileTower_anim_v01_png_37
       rect:
         serializedVersion: 2
         x: 128

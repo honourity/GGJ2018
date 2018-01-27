@@ -47,20 +47,23 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
-      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
-      _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
+      if (!_blipBlip)
+      {
+         _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         _blipBlipAnimator = _blipBlip.GetComponent<Animator>();
 
-      if (!Broken)
-      {
-         if (_linkedReceivers.Length > 0)
+         if (!Broken)
          {
-            var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-            _transmitCoroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            if (_linkedReceivers.Length > 0)
+            {
+               var receiverIndex = Random.Range(0, _linkedReceivers.Length);
+               _transmitCoroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            }
          }
-      }
-      else
-      {
-         _blipBlipAnimator.Play("SignalFade");
+         else
+         {
+            _blipBlipAnimator.Play("SignalFade");
+         }
       }
    }
 
