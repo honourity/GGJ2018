@@ -18,20 +18,25 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
       }
    }
 
-   [SerializeField] private GameObject _signalPrefab;
-   [SerializeField] private GameObject _truckPrefab;
-   [SerializeField] private GameObject _blipBlipPrefab;
-   [SerializeField] private GameObject[] _linkedReceiverObjects;
-   [SerializeField] private float _maxDurability = 1f;
+   [SerializeField] private GameObject _signalPrefab = null;
+   [SerializeField] private GameObject _truckPrefab = null;
+   [SerializeField] private GameObject _blipBlipPrefab = null;
+   [SerializeField] private GameObject[] _linkedReceiverObjects = null;
+   [SerializeField] private float _maxDurability = 3f;
    [SerializeField] private float _transmitTime = 1f;
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
+   [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
 
-   private Coroutine _coroutine;
+   private Animator _animator;
+   private SpriteRenderer _sprite;
+   private Color _originalSpriteColor;
+   private Vector3 _originalPosition;
+   private Coroutine _transmitCoroutine;
 
    private GameObject _blipBlip;
    private float _durability;
-   private SpriteRenderer _sr;
+
 
    public void ProcessMessage()
    {
@@ -40,12 +45,12 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          if (_linkedReceivers.Length > 0)
          {
             var receiverIndex = Random.Range(0, _linkedReceivers.Length);
-            _coroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
+            _transmitCoroutine = StartCoroutine(Transmit(_linkedReceivers[receiverIndex]));
          }
       }
       else
       {
-         //todo - fizzle and pop amongst wreckage
+         //todo - fizzle the transmission
          Debug.Log(gameObject.name + " got a message, broken! cant transmit!");
       }
    }
@@ -54,7 +59,10 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    {
       _durability = _maxDurability;
       _linkedReceivers = new IMessageReceiver[_linkedReceiverObjects.Length];
-      _sr = GetComponent<SpriteRenderer>();
+      _sprite = GetComponent<SpriteRenderer>();
+      _originalSpriteColor = _sprite.color;
+      _originalPosition = transform.position;
+      _animator = GetComponent<Animator>();
 
       for (var i = 0; i < _linkedReceiverObjects.Length; i++)
       {
@@ -73,36 +81,98 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    private IEnumerator Transmit(IMessageReceiver receiver)
    {
-      _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
-      yield return new WaitForSeconds(_transmitTime);
-
-      foreach (GameObject go in _linkedReceiverObjects)
+      if (!Broken)
       {
-         SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
-         signal.Initialize(transform.position, go.transform);
-         if (_blipBlip != null)
-            Destroy(_blipBlip);
+         _blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
+         yield return new WaitForSeconds(_transmitTime);
+
+         foreach (GameObject go in _linkedReceiverObjects)
+         {
+            SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
+            signal.Initialize(transform.position, go.transform);
+            if (_blipBlip != null) Destroy(_blipBlip);
+         }
+      }
+      else
+      {
+         //todo - fizzle the transmission
+         // like this but fizzle
+         //_blipBlip = Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
       }
 
+      yield return null;
    }
 
    public void RemoveDurability(float amount)
    {
-      _durability -= amount;
-      if (_durability < 0) _durability = 0;
-
-      if (_durability <= 0)
+      if (!Broken)
       {
-         //BROKEN!
-         _needsRepair = true;
-         TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
-         truck.Initialize(this);
-         _sr.color = Color.red;
-         if (_coroutine != null)
-            StopCoroutine(_coroutine);
-         if (_blipBlip != null)
-            Destroy(_blipBlip);
+         _durability -= amount;
+         if (_durability < 0) _durability = 0;
+
+         if (_durability <= 0)
+         {
+            _needsRepair = true;
+            TruckController truck = Instantiate(_truckPrefab).GetComponent<TruckController>();
+            truck.Initialize(this);
+            if (_transmitCoroutine != null) StopCoroutine(_transmitCoroutine);
+            if (_blipBlip != null) Destroy(_blipBlip);
+            _animator.SetBool("broken", true);
+         }
+
+         StopCoroutine(DamageBlinkCoroutine());
+         StopCoroutine(DamageShakeCoroutine());
+         StartCoroutine(DamageBlinkCoroutine());
+         StartCoroutine(DamageShakeCoroutine());
       }
+   }
+
+   private IEnumerator DamageBlinkCoroutine()
+   {
+      var colorFrame = true;
+      var timer = 0.1f;
+
+      while (timer > 0f)
+      {
+         _sprite.color = colorFrame ? _DurabilityLossBlinkColor : _originalSpriteColor;
+         colorFrame = !colorFrame;
+
+         timer -= Time.deltaTime;
+         yield return new WaitForSeconds(0.05f);
+      }
+
+      _sprite.color = _originalSpriteColor;
+
+      yield return null;
+   }
+
+   private IEnumerator DamageShakeCoroutine()
+   {
+      var timer = 0.1f;
+      var shakeAmount = 0.5f;
+      var positiveShake = true;
+
+      transform.position -= new Vector3(shakeAmount / 2f, 0f, 0f);
+
+      while (timer > 0f)
+      {
+         var shakeOffset = new Vector3(shakeAmount, 0f, 0f);
+
+         if (!positiveShake) shakeOffset = -shakeOffset;
+
+         transform.position += shakeOffset;
+
+         shakeAmount *= 0.5f;
+
+         positiveShake = !positiveShake;
+
+         timer -= Time.deltaTime;
+         yield return new WaitForSeconds(0.005f);
+      }
+
+      transform.position = _originalPosition;
+
+      yield return null;
    }
 
    public void AddDurability(float amount)
@@ -118,7 +188,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    public IEnumerator Repair()
    {
-      _sr.color = Color.yellow;
+      _animator.SetBool("repairing", true);
 
       while (_needsRepair)
       {
@@ -126,7 +196,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
-      _sr.color = Color.white;
+      _animator.SetBool("repairing", false);
+      _animator.SetBool("broken", false);
    }
 
    void OnDrawGizmos()
