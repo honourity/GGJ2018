@@ -10,6 +10,11 @@ public class UnitController : MonoBehaviour
 
    [SerializeField] protected float _speed = 2f;
 
+   void Awake()
+   {
+      Health = MaxHealth;
+   }
+
    void Update()
    {
 
