@@ -20,6 +20,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
    [SerializeField] private GameObject _signalPrefab;
    [SerializeField] private GameObject _truckPrefab;
+   [SerializeField] private GameObject _blipBlipPrefab;
    [SerializeField] private GameObject[] _linkedReceiverObjects;
    [SerializeField] private float _maxDurability = 1f;
    [SerializeField] private float _transmitTime = 1f;
@@ -71,6 +72,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
       foreach (GameObject go in _linkedReceiverObjects)
       {
+         Instantiate(_blipBlipPrefab, transform.GetChild(0).position, Quaternion.identity);
          SignalController signal = Instantiate(_signalPrefab).GetComponent<SignalController>();
          signal.Initialize(transform.position, go.transform);
       }
@@ -112,7 +114,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
          yield return new WaitForSeconds(0.15f);
       }
 
-      sr.color = Color.black;
+      sr.color = Color.white;
    }
 
    void OnDrawGizmos()

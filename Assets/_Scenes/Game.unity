@@ -210,11 +210,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 122607200}
     m_Modifications:
-    - target: {fileID: 114557135601763446, guid: 128c4c994d093f749a37f68ae4cf9d72,
-        type: 2}
-      propertyPath: _linkedReceiverObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4119958642359050, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.48
@@ -247,19 +242,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1394567355647056, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
-      propertyPath: m_Name
-      value: Radio Tower 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394567355647056, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114557135601763446, guid: 128c4c994d093f749a37f68ae4cf9d72,
         type: 2}
       propertyPath: _linkedReceiverObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1360850787}
+    - target: {fileID: 1394567355647056, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
+      propertyPath: m_Name
+      value: Radio Tower 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 128c4c994d093f749a37f68ae4cf9d72, type: 2}
   m_IsPrefabParent: 0
@@ -979,48 +970,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &635237094
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 13.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 13.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148112208065444, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c9008c53c60281446a349c5a2ea2bfae, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &706387898
 Prefab:
   m_ObjectHideFlags: 0
@@ -29067,7 +29016,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454718611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.5, y: 10.5, z: -10}
+  m_LocalPosition: {x: 18.48, y: 21.78, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29474,11 +29423,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4437158119702652, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 24.283295
+      value: 21.263294
       objectReference: {fileID: 0}
     - target: {fileID: 4437158119702652, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.539492
+      value: 22.819492
       objectReference: {fileID: 0}
     - target: {fileID: 4437158119702652, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
       propertyPath: m_LocalPosition.z
@@ -29754,7 +29703,7 @@ MonoBehaviour:
   - {fileID: 401241717}
   _signalsPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
     type: 2}
-  _timeBetweenSignals: 10
+  _timeBetweenSignals: 5
 --- !u!1 &1920867455
 GameObject:
   m_ObjectHideFlags: 0
