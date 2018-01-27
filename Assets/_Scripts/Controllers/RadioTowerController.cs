@@ -198,6 +198,8 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
 
       while (_needsRepair)
       {
+         //todo - periodically blink maintenance sprite ontop of tower
+
          AddDurability(0.1f);
          yield return new WaitForSeconds(0.15f);
       }

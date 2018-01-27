@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -6,16 +7,13 @@ public class CameraController : MonoBehaviour
    [SerializeField] private float _minZoom;
    [SerializeField] private float _maxZoom;
    [SerializeField] private Transform _target;
-
    [SerializeField] private BoxCollider2D _levelBounds;
+
+   [SerializeField]
+   private Sprite[] _screenArtifacts;
+
    private Vector3 _min;
    private Vector3 _max;
-
-   //public void IsVisible(SpriteRenderer sprite)
-   //{
-   //   //todo - compare sprite bounds with camera bounds instead of centre of transform, since its visually inaccurate
-   //   sprite.transform.position
-   //}
 
    private void Start()
    {
@@ -23,6 +21,8 @@ public class CameraController : MonoBehaviour
 
       _min = _levelBounds.bounds.min;
       _max = _levelBounds.bounds.max;
+
+      StartCoroutine(ScreenArtifactGenerator());
    }
 
    private void LateUpdate()
@@ -42,6 +42,22 @@ public class CameraController : MonoBehaviour
       y = Mathf.Clamp(y, _min.y + Camera.main.orthographicSize, _max.y - Camera.main.orthographicSize);
 
       transform.position = new Vector3(x, y, transform.position.z);
+   }
 
+   private IEnumerator ScreenArtifactGenerator()
+   {
+      var artifactCount = _screenArtifacts.Length;
+      if (artifactCount > 0)
+      {
+         while (true)
+         {
+            var artifact = _screenArtifacts[Random.Range(0, artifactCount)];
+
+            //todo - flicker do an artifact coroutine?
+            // and wait a a random amount of time to do another random one
+         }
+      }
+
+      yield return null;
    }
 }
