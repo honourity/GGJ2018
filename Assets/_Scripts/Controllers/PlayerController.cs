@@ -4,9 +4,14 @@ using UnityEngine;
 public class PlayerController : UnitController
 {
    public bool Invulnerable { get; set; }
+   public bool Dead { get; private set; }
+   public float MaxUltimateCharge { get { return _maxUltimateCharge; } }
+   public float UltimateCharge { get; private set; }
 
    [SerializeField]
    private Color _killColor = Color.red;
+   [SerializeField]
+   private float _maxUltimateCharge = 2f;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
@@ -24,6 +29,13 @@ public class PlayerController : UnitController
       }
    }
 
+   private void Die()
+   {
+      Dead = true;
+      Invulnerable = true;
+      _animator.SetTrigger("die");
+   }
+
    public void StopMoving()
    {
       _animator.SetBool("moving", false);
@@ -36,6 +48,8 @@ public class PlayerController : UnitController
       var colorFrame = true;
       var timer = 0.05f;
 
+      if (Health <= 0) Die();
+
       while (timer > 0f)
       {
          _sprite.color = colorFrame ? _killColor : _originalSpriteColor;
@@ -47,7 +61,10 @@ public class PlayerController : UnitController
 
       _sprite.color = _originalSpriteColor;
 
-      InputManager.Instance.InputLocked = false;
+      if (!Dead)
+      {
+         InputManager.Instance.InputLocked = false;
+      }
 
       yield return null;
    }
@@ -122,7 +139,11 @@ public class PlayerController : UnitController
 
    public void Ultimate()
    {
-      _animator.SetTrigger("ultimate");
+      if (UltimateCharge == MaxUltimateCharge)
+      {
+         UltimateCharge = 0;
+         _animator.SetTrigger("ultimate");
+      }
    }
 
    public void Attack()
@@ -137,5 +158,15 @@ public class PlayerController : UnitController
       _animator = GetComponentInChildren<Animator>();
       _sprite = GetComponentInChildren<SpriteRenderer>();
       _originalSpriteColor = _sprite.color;
+   }
+
+   private void OnTriggerStay2D(Collider2D collision)
+   {
+      if (collision.CompareTag("RadioTower"))
+      {
+         UltimateCharge += Time.deltaTime;
+         if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
+         EventManager.FireEvent("PlayerUltimateCharge");
+      }
    }
 }
