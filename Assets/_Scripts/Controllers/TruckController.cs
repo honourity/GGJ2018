@@ -9,10 +9,12 @@ public class TruckController : UnitController
 
    private float _initialScale;
    private Vector3 _diffVector;
+   private Animator _animator;
 
    private void Awake()
    {
       _initialScale = transform.localScale.x;
+      _animator = GetComponent<Animator>();
    }
 
    public void Initialize(RadioTowerController radioTower)
@@ -40,13 +42,21 @@ public class TruckController : UnitController
    {
       if (Vector2.Distance(transform.position, _radioTower.transform.position) > _desiredDistance)
       {
-         if (_diffVector.x <= 0)
-            transform.localScale = new Vector3(-_initialScale, _initialScale);
-         else
-            transform.localScale = new Vector3(_initialScale, _initialScale);
+         //if (_diffVector.x <= 0)
+         //   transform.localScale = new Vector3(-_initialScale, _initialScale);
+         //else
+         //   transform.localScale = new Vector3(_initialScale, _initialScale);
 
          transform.Translate((_diffVector) * _speed * Time.deltaTime);
 
+         var directionValue = Mathf.RoundToInt((Vector3.Angle(_diffVector, Vector3.up) / 45f));
+         if (directionValue == 8) directionValue = 0;
+         var direction = (Enums.Directions)directionValue;
+
+         //compressing 8way to 4way directions
+         var adjustedDirection = Helpers.Compress8to4Directions(direction);
+
+         _animator.SetFloat("direction", (int)adjustedDirection);
       }
       else
       {
