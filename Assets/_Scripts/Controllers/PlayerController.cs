@@ -54,6 +54,7 @@ public class PlayerController : UnitController
 
    private void Die()
    {
+      EventManager.FireEvent("DAED");
       Dead = true;
       Invulnerable = true;
       _animator.SetTrigger("die");
