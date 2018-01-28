@@ -29,7 +29,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
-   [SerializeField] private Transform _signalTarget;
+   [SerializeField] private Transform _signalTarget = null;
    [SerializeField] private GameObject _repairSpriteGameObject = null;
 
    private Animator _animator;
