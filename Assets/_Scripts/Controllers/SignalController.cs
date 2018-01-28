@@ -8,13 +8,13 @@ public class SignalController : MonoBehaviour
    private float _speed = 2f;
    private Vector3 _diffVector;
    private Animator _animator;
+   private bool _messageDelivered;
 
    public void Initialize(Vector3 start, Transform end, IMessageReceiver receiver)
    {
       transform.position = start;
       _target = end.transform;
       _messageReceiver = receiver;
-      //transform.right = -_diffVector;
    }
 
    private void Awake()
@@ -33,7 +33,12 @@ public class SignalController : MonoBehaviour
       }
       else
       {
-         _messageReceiver.ProcessMessage();
+         if (!_messageDelivered)
+         {
+            _messageReceiver.ProcessMessage();
+            _messageDelivered = true;
+         }
+         
          Destroy(gameObject);
       }
    }

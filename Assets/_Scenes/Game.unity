@@ -873,7 +873,7 @@ MonoBehaviour:
   - {fileID: 2147032002}
   _signalsPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
     type: 2}
-  _timeBetweenSignals: 3
+  _timeBetweenSignals: 10
   _signalSource: {fileID: 1188194156}
 --- !u!1001 &602786511
 Prefab:

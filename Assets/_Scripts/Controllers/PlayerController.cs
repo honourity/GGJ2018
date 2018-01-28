@@ -28,6 +28,8 @@ public class PlayerController : UnitController
    [SerializeField]
    private AudioClip _ultimateSound = null;
    [SerializeField]
+   private AudioClip _takeDamageSound = null;
+   [SerializeField]
    private AudioSource _audioSource;
    [SerializeField]
    private AudioSource _footstepAudioSource;
@@ -44,6 +46,7 @@ public class PlayerController : UnitController
       {
          base.TakeDamage(damage);
          EventManager.FireEvent("PlayerTakeDamage");
+         _audioSource.PlayOneShot(_takeDamageSound);
          StopAllCoroutines();
          StartCoroutine(TakingDamageCoroutine());
       }
@@ -233,9 +236,13 @@ public class PlayerController : UnitController
    {
       if (collision.CompareTag("RadioTower"))
       {
-         UltimateCharge += Time.deltaTime;
-         if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
-         EventManager.FireEvent("PlayerCharge");
+         var tower = collision.GetComponent<RadioTowerController>();
+         if (!tower.Broken)
+         {
+            UltimateCharge += Time.deltaTime;
+            if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
+            EventManager.FireEvent("PlayerCharge");
+         }
       }
    }
 }

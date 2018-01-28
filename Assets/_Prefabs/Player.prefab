@@ -319,6 +319,7 @@ MonoBehaviour:
   _deathSound: {fileID: 8300000, guid: f1d95309edcb26440a2ffa76a8daf12a, type: 3}
   _attackSound: {fileID: 8300000, guid: 6a007aa5bac73be46a9be9879ab7e80c, type: 3}
   _ultimateSound: {fileID: 8300000, guid: bdea1cd7076ad1643be3895b9a3988ef, type: 3}
+  _takeDamageSound: {fileID: 8300000, guid: 52911e3380ed5d249adf42e10705cd41, type: 3}
   _audioSource: {fileID: 82609639875556724}
   _footstepAudioSource: {fileID: 82096445139444258}
 --- !u!212 &212298603569985314
