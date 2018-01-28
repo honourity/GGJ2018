@@ -21,6 +21,7 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
 
    public void ProcessMessage()
    {
+      _audioSource.PlayOneShot(_launchSound);
       _animator.SetTrigger("Launch");
    }
 
@@ -33,6 +34,5 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
    public void CreateMissile()
    {
       Instantiate(_missilePrefab, _missileSpawnPoint.position, Quaternion.identity, null);
-      _audioSource.PlayOneShot(_launchSound);
    }
 }
