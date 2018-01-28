@@ -7,6 +7,7 @@ public class PlayerController : UnitController
    public bool Dead { get; private set; }
    public float MaxUltimateCharge { get { return _maxUltimateCharge; } }
    public float UltimateCharge { get; private set; }
+   public Transform Target { get { return _target; } }
 
    [SerializeField]
    private Color _killColor = Color.red;
@@ -18,6 +19,8 @@ public class PlayerController : UnitController
    private float _attackRange = 1f;
    [SerializeField]
    private float _ultimateRange = 2f;
+   [SerializeField]
+   private Transform _target = null;
 
    private Animator _animator;
    private SpriteRenderer _sprite;

@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133e71ab2d184d94f98b409b9f44bafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowPrefab: {fileID: 114658552124151048, guid: 0e34596f61139244fa4ade21bd2e5adb,
+  _explosionPrefab: {fileID: 1680662344947336, guid: 5255350e2b47c91438202d197756b2c8,
     type: 2}
   _maxSpeed: 7
 --- !u!212 &212446871119422086
