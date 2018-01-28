@@ -3,6 +3,8 @@
 [DisallowMultipleComponent]
 public class AudioManager : MonoBehaviour
 {
+   [SerializeField] AudioClip _musicTrack;
+   [SerializeField] AudioClip _deathMusicTrack;
 
    public static AudioManager Instance
    {
@@ -17,6 +19,12 @@ public class AudioManager : MonoBehaviour
    private void Awake()
    {
       _audioSource = GetComponent<AudioSource>();
+   }
+
+   private void Start()
+   {
+      _audioSource.clip = _musicTrack;
+      _audioSource.Play();
    }
 
 }

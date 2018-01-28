@@ -52,6 +52,7 @@ public class PlayerController : UnitController
    private void Die()
    {
       EventManager.FireEvent("DAED");
+      InputManager.Instance.InputLocked = true;
       Dead = true;
       Invulnerable = true;
       _animator.SetTrigger("die");
