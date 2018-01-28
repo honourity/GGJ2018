@@ -22,4 +22,9 @@ public class MainMenuManager : MonoBehaviour
    {
       SceneManager.LoadScene("Game");
    }
+
+   public void PlayStaticSound()
+   {
+      GetComponent<AudioSource>().Play();
+   }
 }
