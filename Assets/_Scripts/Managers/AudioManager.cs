@@ -21,10 +21,25 @@ public class AudioManager : MonoBehaviour
       _audioSource = GetComponent<AudioSource>();
    }
 
+   private void OnEnable()
+   {
+      EventManager.AddListener("DAED", OnDAED);
+   }
+
+   private void OnDisable()
+   {
+      EventManager.RemoveListener("DAED", OnDAED);
+   }
+
    private void Start()
    {
       _audioSource.clip = _musicTrack;
       _audioSource.Play();
+   }
+
+   private void OnDAED()
+   {
+      _audioSource.Stop();
    }
 
 }

@@ -13,6 +13,8 @@ public class InterfaceManager : MonoBehaviour
    [SerializeField] Animator _tvAnimator;
    [SerializeField] GameObject _gameOverButton;
 
+   [SerializeField] GameObject _staticAndDeathAudio;
+
    private void OnEnable()
    {
       EventManager.AddListener("PlayerTakeDamage", OnTakeDamage);
@@ -56,6 +58,7 @@ public class InterfaceManager : MonoBehaviour
    private IEnumerator DelayedDAED()
    {
       yield return new WaitForSeconds(2.7f);
+      _staticAndDeathAudio.SetActive(true);
       _tvAnimator.Play("TVFrameStatic");
       yield return new WaitForSeconds(2f);
       _gameOverButton.SetActive(true);
