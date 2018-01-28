@@ -17,12 +17,8 @@ public class CameraController : MonoBehaviour
 
    private void Start()
    {
-      if (_target == null) _target = GameManager.Instance.Player.transform;
-
       _min = _levelBounds.bounds.min;
       _max = _levelBounds.bounds.max;
-
-      StartCoroutine(ScreenArtifactGenerator());
    }
 
    private void LateUpdate()
@@ -42,22 +38,5 @@ public class CameraController : MonoBehaviour
       y = Mathf.Clamp(y, _min.y + Camera.main.orthographicSize, _max.y - Camera.main.orthographicSize);
 
       transform.position = new Vector3(x, y, transform.position.z);
-   }
-
-   private IEnumerator ScreenArtifactGenerator()
-   {
-      //var artifactCount = _screenArtifacts.Length;
-      //if (artifactCount > 0)
-      //{
-      //   while (true)
-      //   {
-      //      var artifact = _screenArtifacts[Random.Range(0, artifactCount)];
-
-      //      //todo - flicker do an artifact coroutine?
-      //      // and wait a a random amount of time to do another random one
-      //   }
-      //}
-
-      yield return null;
    }
 }
