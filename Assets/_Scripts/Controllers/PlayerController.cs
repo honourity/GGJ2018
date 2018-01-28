@@ -26,6 +26,8 @@ public class PlayerController : UnitController
    [SerializeField]
    private AudioClip _attackSound = null;
    [SerializeField]
+   private AudioClip _ultimateSound = null;
+   [SerializeField]
    private AudioSource _audioSource;
    [SerializeField]
    private AudioSource _footstepAudioSource;
@@ -154,31 +156,35 @@ public class PlayerController : UnitController
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
 
-   public void Ultimate()
+   public void UltimateAnimate()
    {
       if (UltimateCharge == MaxUltimateCharge)
       {
+         _audioSource.PlayOneShot(_ultimateSound);
          Invulnerable = true;
          UltimateCharge = 0;
          _animator.SetTrigger("ultimate");
          EventManager.FireEvent("PlayerCharge");
+      }
+   }
 
-         var allTowers = FindObjectsOfType<RadioTowerController>();
-         foreach (var tower in allTowers)
+   public void UltimateDamage()
+   {
+      var allTowers = FindObjectsOfType<RadioTowerController>();
+      foreach (var tower in allTowers)
+      {
+         if (!tower.Broken && Vector3.Distance(tower.transform.position, transform.position) < _ultimateRange)
          {
-            if (!tower.Broken && Vector3.Distance(tower.transform.position, transform.position) < _ultimateRange)
-            {
-               tower.RemoveDurability(9001);
-            }
+            tower.RemoveDurability(9001);
          }
+      }
 
-         var allMissiles = FindObjectsOfType<MissileController>();
-         foreach (var missile in allMissiles)
+      var allMissiles = FindObjectsOfType<MissileController>();
+      foreach (var missile in allMissiles)
+      {
+         if (Vector3.Distance(missile.transform.position, transform.position) < _ultimateRange)
          {
-            if (Vector3.Distance(missile.transform.position, transform.position) < _ultimateRange)
-            {
-               missile.Explode();
-            }
+            missile.Explode();
          }
       }
    }

@@ -57,7 +57,7 @@ public class InputManager : MonoBehaviour
          }
 
          //actions
-         if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.Player.Ultimate();
+         if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.Player.UltimateAnimate();
          if (Input.GetKeyDown(KeyCode.F)) GameManager.Instance.Player.Attack();
       }
       else
