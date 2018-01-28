@@ -25,12 +25,16 @@ public class PlayerController : UnitController
    private AudioClip _deathSound = null;
    [SerializeField]
    private AudioClip _attackSound = null;
+   [SerializeField]
+   private AudioSource _audioSource;
+   [SerializeField]
+   private AudioSource _footstepAudioSource;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
    private Enums.Directions4WayCompressing _previousDirection = Enums.Directions4WayCompressing.Right;
-   private AudioSource _audioSource;
+   private bool _moving;
 
    public override void TakeDamage(float damage)
    {
@@ -54,6 +58,7 @@ public class PlayerController : UnitController
    public void StopMoving()
    {
       _animator.SetBool("moving", false);
+      _moving = false;
    }
 
    private IEnumerator TakingDamageCoroutine()
@@ -144,6 +149,7 @@ public class PlayerController : UnitController
       _animator.SetFloat("direction", (int)adjustedDirection);
       _animator.SetInteger("direction_int", (int)adjustedDirection);
       _animator.SetBool("moving", true);
+      _moving = true;
 
       transform.Translate(translation.normalized * _speed * Time.deltaTime);
    }
@@ -202,7 +208,19 @@ public class PlayerController : UnitController
       _animator = GetComponentInChildren<Animator>();
       _sprite = GetComponentInChildren<SpriteRenderer>();
       _originalSpriteColor = _sprite.color;
-      _audioSource = GetComponent<AudioSource>();
+   }
+
+   private void Update()
+   {
+      if (!_moving && _footstepAudioSource.isPlaying)
+      {
+         _footstepAudioSource.Stop();
+      }
+      else if (_moving && !_footstepAudioSource.isPlaying)
+      {
+         //stop looking stomp sound
+         _footstepAudioSource.Play();
+      }
    }
 
    private void OnTriggerStay2D(Collider2D collision)
