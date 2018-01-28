@@ -312,7 +312,7 @@ MonoBehaviour:
   _speed: 3
   _killColor: {r: 1, g: 0, b: 0, a: 1}
   _maxUltimateCharge: 2
-  _ultimateChargeRate: 0.5
+  _ultimateChargeRate: 0.8
   _attackDamage: 1
   _attackRange: 1
   _ultimateRange: 2

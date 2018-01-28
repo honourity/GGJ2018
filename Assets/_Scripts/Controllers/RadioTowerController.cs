@@ -115,6 +115,7 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
             truck.Initialize(this);
             if (_transmitCoroutine != null) StopCoroutine(_transmitCoroutine);
             _animator.SetBool("broken", true);
+            Transmitting = false;
          }
 
          StopCoroutine(DamageBlinkCoroutine());
