@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameManager : MonoBehaviour
@@ -12,4 +13,8 @@ public class GameManager : MonoBehaviour
    private CameraController _camera;
    public CameraController Camera { get { return _camera = _camera ?? FindObjectOfType<CameraController>(); } }
 
+   public void LoadScene(string scene)
+   {
+      SceneManager.LoadScene(scene);
+   }
 }
