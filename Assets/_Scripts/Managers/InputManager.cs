@@ -6,10 +6,6 @@ public class InputManager : MonoBehaviour
    private static InputManager _instance;
    public static InputManager Instance { get { return _instance = _instance ?? FindObjectOfType<InputManager>(); } }
 
-   #region Debug Input
-   [SerializeField] RadioTowerController _tower = null;
-   #endregion
-
    public bool InputLocked { get; set; }
 
    private void Update()
@@ -68,14 +64,5 @@ public class InputManager : MonoBehaviour
       {
          GameManager.Instance.Player.StopMoving();
       }
-
-      #region Debug Input
-
-      if (Input.GetKeyDown(KeyCode.X))
-      {
-         GameManager.Instance.Player.TakeDamage(1);
-      }
-
-      #endregion  
    }
 }

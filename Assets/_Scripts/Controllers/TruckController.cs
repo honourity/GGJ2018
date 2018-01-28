@@ -5,13 +5,11 @@ public class TruckController : UnitController
    public RadioTowerController _radioTower;
    [SerializeField] float _desiredDistance;
 
-   private float _initialScale;
    private Vector3 _diffVector;
    private Animator _animator;
 
    private void Awake()
    {
-      _initialScale = transform.localScale.x;
       _animator = GetComponent<Animator>();
    }
 
@@ -40,11 +38,6 @@ public class TruckController : UnitController
    {
       if (Vector2.Distance(transform.position, _radioTower.transform.position) > _desiredDistance)
       {
-         //if (_diffVector.x <= 0)
-         //   transform.localScale = new Vector3(-_initialScale, _initialScale);
-         //else
-         //   transform.localScale = new Vector3(_initialScale, _initialScale);
-
          transform.Translate((_diffVector) * _speed * Time.deltaTime);
 
          var adjustedAngle = Vector3.SignedAngle(Vector3.up, _diffVector, Vector3.back);

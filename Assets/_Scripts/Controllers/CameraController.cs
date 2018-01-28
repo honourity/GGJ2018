@@ -46,17 +46,17 @@ public class CameraController : MonoBehaviour
 
    private IEnumerator ScreenArtifactGenerator()
    {
-      var artifactCount = _screenArtifacts.Length;
-      if (artifactCount > 0)
-      {
-         while (true)
-         {
-            var artifact = _screenArtifacts[Random.Range(0, artifactCount)];
+      //var artifactCount = _screenArtifacts.Length;
+      //if (artifactCount > 0)
+      //{
+      //   while (true)
+      //   {
+      //      var artifact = _screenArtifacts[Random.Range(0, artifactCount)];
 
-            //todo - flicker do an artifact coroutine?
-            // and wait a a random amount of time to do another random one
-         }
-      }
+      //      //todo - flicker do an artifact coroutine?
+      //      // and wait a a random amount of time to do another random one
+      //   }
+      //}
 
       yield return null;
    }
