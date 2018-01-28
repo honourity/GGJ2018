@@ -17,4 +17,10 @@ public class GameManager : MonoBehaviour
    {
       SceneManager.LoadScene(scene);
    }
+
+   public void Reset()
+   {
+      _playerController = null;
+      _camera = null;
+   }
 }
