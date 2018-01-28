@@ -59,13 +59,18 @@ public class InputManager : MonoBehaviour
             }
 
             //actions
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(1)) GameManager.Instance.Player.UltimateAnimate();
-            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButton(0)) GameManager.Instance.Player.Attack();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1)) GameManager.Instance.Player.UltimateAnimate();
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)) GameManager.Instance.Player.Attack();
          }
          else
          {
             GameManager.Instance.Player.StopMoving();
          }
+      }
+
+      if (Input.GetKeyDown(KeyCode.L))
+      {
+         GameManager.Instance.ResetGame();
       }
    }
 }
