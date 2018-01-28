@@ -26,15 +26,6 @@ public class PlayerController : UnitController
    private Transform _target = null;
    [SerializeField]
    private AudioClip _deathSound = null;
-
-   public void ResetThing()
-   {
-      Dead = false;
-      Invulnerable = false;
-      UltimateCharge = 0f;
-      StopAllCoroutines();
-   }
-
    [SerializeField]
    private AudioClip _attackSound = null;
    [SerializeField]

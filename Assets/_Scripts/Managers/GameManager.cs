@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
    private CameraController _camera;
    public CameraController Camera { get { return _camera = _camera ?? FindObjectOfType<CameraController>(); } }
 
+   private void OnDestroy()
+   {
+      _instance = null;
+   }
+
    public void LoadScene(string scene)
    {
       _playerController = null;
@@ -20,32 +25,6 @@ public class GameManager : MonoBehaviour
 
       SceneManager.LoadScene(scene);
    }
-
-   public void ResetGame()
-   {
-      Player.ResetThing();
-      var towers = FindObjectsOfType<RadioTowerController>();
-
-      foreach (var tower in towers)
-      {
-         tower.ResetThing();
-      }
-
-      var signals = FindObjectsOfType<SignalController>();
-      foreach (var signal in signals)
-      {
-         Destroy(signal.gameObject);
-      }
-
-      var missiles = FindObjectsOfType<MissileController>();
-      foreach (var missile in missiles)
-      {
-         Destroy(missile.gameObject);
-      }
-
-      ScoreManager.Instance.Score = 0;
-   }
-      
 
    //private void Awake()
    //{

@@ -29,17 +29,6 @@ public class RadioTowerController : MonoBehaviour, IMessageReceiver
    private IMessageReceiver[] _linkedReceivers;
    [SerializeField] private bool _needsRepair;
    [SerializeField] private Color _DurabilityLossBlinkColor = Color.red;
-
-   public void ResetThing()
-   {
-      _durability = _maxDurability;
-      _needsRepair = false;
-      Transmitting = false;
-      StopAllCoroutines();
-      _animator.SetBool("repairing", false);
-      _animator.SetBool("broken", false);
-   }
-
    [SerializeField] private Transform _signalTarget = null;
    [SerializeField] private GameObject _repairSpriteGameObject = null;
 
