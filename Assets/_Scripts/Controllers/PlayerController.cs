@@ -33,6 +33,7 @@ public class PlayerController : UnitController
       Invulnerable = false;
       UltimateCharge = 0f;
       StopAllCoroutines();
+      _animator.SetBool("dead", false);
    }
 
    [SerializeField]
@@ -71,7 +72,7 @@ public class PlayerController : UnitController
       Dead = true;
       Invulnerable = true;
       UltimateCharge = 0f;
-      _animator.SetTrigger("die");
+      _animator.SetBool("dead", true);
       _audioSource.PlayOneShot(_deathSound);
    }
 
