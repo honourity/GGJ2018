@@ -62,7 +62,7 @@ public class PlayerController : UnitController
       Dead = true;
       Invulnerable = true;
       UltimateCharge = 0f;
-      _animator.SetTrigger("die");
+      _animator.SetBool("dead", true);
       _audioSource.PlayOneShot(_deathSound);
    }
 
