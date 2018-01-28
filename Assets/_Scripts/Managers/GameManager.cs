@@ -21,8 +21,34 @@ public class GameManager : MonoBehaviour
       SceneManager.LoadScene(scene);
    }
 
-   private void Awake()
+   public void ResetGame()
    {
-      DontDestroyOnLoad(gameObject);
+      Player.ResetThing();
+      var towers = FindObjectsOfType<RadioTowerController>();
+
+      foreach (var tower in towers)
+      {
+         tower.ResetThing();
+      }
+
+      var signals = FindObjectsOfType<SignalController>();
+      foreach (var signal in signals)
+      {
+         Destroy(signal.gameObject);
+      }
+
+      var missiles = FindObjectsOfType<MissileController>();
+      foreach (var missile in missiles)
+      {
+         Destroy(missile.gameObject);
+      }
+
+      ScoreManager.Instance.Score = 0;
    }
+      
+
+   //private void Awake()
+   //{
+   //   DontDestroyOnLoad(gameObject);
+   //}
 }

@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+   private static ScoreManager _instance;
+   public static ScoreManager Instance { get { return _instance = _instance ?? FindObjectOfType<ScoreManager>(); } }
+
    private Text _scoreText;
-   public static int Score;
+   public int Score;
 
    private void Awake()
    {

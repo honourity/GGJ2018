@@ -59,7 +59,8 @@ public class InterfaceManager : MonoBehaviour
       _tvAnimator.Play("TVFrameStatic");
       yield return new WaitForSeconds(2f);
       _gameOverButton.SetActive(true);
-      
+      GameManager.Instance.ResetGame();
+      yield return null;
    }
 
 }
