@@ -10,59 +10,62 @@ public class InputManager : MonoBehaviour
 
    private void Update()
    {
-      if (!InputLocked)
+      if (GameManager.Instance.Player != null)
       {
-         //capturing all input
-         var w = Input.GetKey(KeyCode.W);
-         var a = Input.GetKey(KeyCode.A);
-         var s = Input.GetKey(KeyCode.S);
-         var d = Input.GetKey(KeyCode.D);
+         if (!InputLocked)
+         {
+            //capturing all input
+            var w = Input.GetKey(KeyCode.W);
+            var a = Input.GetKey(KeyCode.A);
+            var s = Input.GetKey(KeyCode.S);
+            var d = Input.GetKey(KeyCode.D);
 
-         //movement
-         if (w && d)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpRight);
-         }
-         else if (s && d)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownRight);
-         }
-         else if (s && a)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownLeft);
-         }
-         else if (a && w)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpLeft);
-         }
-         else if (w)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Up);
-         }
-         else if (d)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Right);
-         }
-         else if (s)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Down);
-         }
-         else if (a)
-         {
-            GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Left);
+            //movement
+            if (w && d)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpRight);
+            }
+            else if (s && d)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownRight);
+            }
+            else if (s && a)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.DownLeft);
+            }
+            else if (a && w)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.UpLeft);
+            }
+            else if (w)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Up);
+            }
+            else if (d)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Right);
+            }
+            else if (s)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Down);
+            }
+            else if (a)
+            {
+               GameManager.Instance.Player.Move(Enums.Directions4WayCompressing.Left);
+            }
+            else
+            {
+               GameManager.Instance.Player.StopMoving();
+            }
+
+            //actions
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(1)) GameManager.Instance.Player.UltimateAnimate();
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButton(0)) GameManager.Instance.Player.Attack();
          }
          else
          {
             GameManager.Instance.Player.StopMoving();
          }
-
-         //actions
-         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(1)) GameManager.Instance.Player.UltimateAnimate();
-         if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButton(0)) GameManager.Instance.Player.Attack();
-      }
-      else
-      {
-         GameManager.Instance.Player.StopMoving();
       }
    }
 }

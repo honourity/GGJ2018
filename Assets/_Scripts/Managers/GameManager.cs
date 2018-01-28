@@ -15,13 +15,14 @@ public class GameManager : MonoBehaviour
 
    public void LoadScene(string scene)
    {
-      Destroy(gameObject, 0.1f);
+      _playerController = null;
+      _camera = null;
+
       SceneManager.LoadScene(scene);
    }
 
-   public void Reset()
+   private void Awake()
    {
-      _playerController = null;
-      _camera = null;
+      DontDestroyOnLoad(gameObject);
    }
 }
