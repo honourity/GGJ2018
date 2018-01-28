@@ -308,10 +308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fdce30b0e10e041a47504689a5e278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 1
   _speed: 3
   _killColor: {r: 1, g: 0, b: 0, a: 1}
   _maxUltimateCharge: 2
+  _ultimateChargeRate: 0.5
   _attackDamage: 1
   _attackRange: 1
   _ultimateRange: 2
