@@ -132,6 +132,7 @@ MonoBehaviour:
     type: 2}
   _signalTarget: {fileID: 4054051394077084}
   _missileSpawnPoint: {fileID: 4222135751630166}
+  _launchSound: {fileID: 8300000, guid: a84b590092626094e9aa11f4e5ead02d, type: 3}
 --- !u!212 &212671074356675046
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -174,5 +175,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

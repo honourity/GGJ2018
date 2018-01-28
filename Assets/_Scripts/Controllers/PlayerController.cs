@@ -21,11 +21,16 @@ public class PlayerController : UnitController
    private float _ultimateRange = 2f;
    [SerializeField]
    private Transform _target = null;
+   [SerializeField]
+   private AudioClip _deathSound = null;
+   [SerializeField]
+   private AudioClip _attackSound = null;
 
    private Animator _animator;
    private SpriteRenderer _sprite;
    private Color _originalSpriteColor;
    private Enums.Directions4WayCompressing _previousDirection = Enums.Directions4WayCompressing.Right;
+   private AudioSource _audioSource;
 
    public override void TakeDamage(float damage)
    {
@@ -43,6 +48,7 @@ public class PlayerController : UnitController
       Dead = true;
       Invulnerable = true;
       _animator.SetTrigger("die");
+      _audioSource.PlayOneShot(_deathSound);
    }
 
    public void StopMoving()
@@ -174,7 +180,7 @@ public class PlayerController : UnitController
    public void Attack()
    {
       _animator.SetTrigger("attack");
-
+      _audioSource.PlayOneShot(_attackSound);
    }
 
    public void ActuallyAttack()
@@ -196,6 +202,7 @@ public class PlayerController : UnitController
       _animator = GetComponentInChildren<Animator>();
       _sprite = GetComponentInChildren<SpriteRenderer>();
       _originalSpriteColor = _sprite.color;
+      _audioSource = GetComponent<AudioSource>();
    }
 
    private void OnTriggerStay2D(Collider2D collision)

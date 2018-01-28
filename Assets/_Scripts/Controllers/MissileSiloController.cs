@@ -8,8 +8,11 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
    private Transform _signalTarget;
    [SerializeField]
    private Transform _missileSpawnPoint;
+   [SerializeField]
+   private AudioClip _launchSound;
 
    private Animator _animator;
+   private AudioSource _audioSource;
 
    public Transform GetSignalTarget()
    {
@@ -24,10 +27,12 @@ public class MissileSiloController : MonoBehaviour, IMessageReceiver
    private void Awake()
    {
       _animator = GetComponent<Animator>();
+      _audioSource = GetComponent<AudioSource>();
    }
 
    public void CreateMissile()
    {
       Instantiate(_missilePrefab, _missileSpawnPoint.position, Quaternion.identity, null);
+      _audioSource.PlayOneShot(_launchSound);
    }
 }
