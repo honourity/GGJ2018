@@ -308,10 +308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fdce30b0e10e041a47504689a5e278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 1
   _speed: 3
   _killColor: {r: 1, g: 0, b: 0, a: 1}
   _maxUltimateCharge: 2
+  _ultimateChargeRate: 0.5
   _attackDamage: 1
   _attackRange: 1
   _ultimateRange: 2
@@ -319,6 +320,7 @@ MonoBehaviour:
   _deathSound: {fileID: 8300000, guid: f1d95309edcb26440a2ffa76a8daf12a, type: 3}
   _attackSound: {fileID: 8300000, guid: 6a007aa5bac73be46a9be9879ab7e80c, type: 3}
   _ultimateSound: {fileID: 8300000, guid: bdea1cd7076ad1643be3895b9a3988ef, type: 3}
+  _takeDamageSound: {fileID: 8300000, guid: 52911e3380ed5d249adf42e10705cd41, type: 3}
   _audioSource: {fileID: 82609639875556724}
   _footstepAudioSource: {fileID: 82096445139444258}
 --- !u!212 &212298603569985314

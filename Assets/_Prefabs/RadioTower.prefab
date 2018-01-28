@@ -163,11 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b3470b984af4344b9798fd8016cdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _signalPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
+  _signalPrefab: {fileID: 114760792882409720, guid: bbac5d98a192c7341b1c548e9142b9cc,
     type: 2}
   _truckPrefab: {fileID: 1741038353576640, guid: d92adc57782f4b74fa444c4a2ea9ea0b,
     type: 2}
-  _blipBlipPrefab: {fileID: 1117376373350816, guid: 8a52721ecca87734cb61292913c8ef8a,
+  _signalPulsePrefab: {fileID: 114476676082640364, guid: 8a52721ecca87734cb61292913c8ef8a,
     type: 2}
   _linkedReceiverObjects:
   - {fileID: 0}

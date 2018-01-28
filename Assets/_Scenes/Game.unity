@@ -793,29 +793,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114710385971576394, guid: cd32495313145eb4ebb9206fadd87100,
-        type: 2}
-      propertyPath: _speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114710385971576394, guid: cd32495313145eb4ebb9206fadd87100,
-        type: 2}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 439089022}
-    - target: {fileID: 114710385971576394, guid: cd32495313145eb4ebb9206fadd87100,
-        type: 2}
-      propertyPath: _maxHealth
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd32495313145eb4ebb9206fadd87100, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &439089022 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4329793534793820, guid: cd32495313145eb4ebb9206fadd87100,
-    type: 2}
-  m_PrefabInternal: {fileID: 302032549}
 --- !u!1001 &470943101
 Prefab:
   m_ObjectHideFlags: 0
@@ -1236,7 +1216,7 @@ MonoBehaviour:
   - {fileID: 2147032002}
   _signalsPrefab: {fileID: 1565350453784138, guid: bbac5d98a192c7341b1c548e9142b9cc,
     type: 2}
-  _timeBetweenSignals: 3
+  _timeBetweenSignals: 7
   _signalSource: {fileID: 1188194156}
 --- !u!1001 &602786511
 Prefab:

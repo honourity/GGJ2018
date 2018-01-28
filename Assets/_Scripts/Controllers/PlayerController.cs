@@ -14,6 +14,8 @@ public class PlayerController : UnitController
    [SerializeField]
    private float _maxUltimateCharge = 2f;
    [SerializeField]
+   private float _ultimateChargeRate = 1f;
+   [SerializeField]
    private float _attackDamage = 1f;
    [SerializeField]
    private float _attackRange = 1f;
@@ -27,6 +29,8 @@ public class PlayerController : UnitController
    private AudioClip _attackSound = null;
    [SerializeField]
    private AudioClip _ultimateSound = null;
+   [SerializeField]
+   private AudioClip _takeDamageSound = null;
    [SerializeField]
    private AudioSource _audioSource;
    [SerializeField]
@@ -44,6 +48,7 @@ public class PlayerController : UnitController
       {
          base.TakeDamage(damage);
          EventManager.FireEvent("PlayerTakeDamage");
+         _audioSource.PlayOneShot(_takeDamageSound);
          StopAllCoroutines();
          StartCoroutine(TakingDamageCoroutine());
       }
@@ -55,6 +60,7 @@ public class PlayerController : UnitController
       InputManager.Instance.InputLocked = true;
       Dead = true;
       Invulnerable = true;
+      UltimateCharge = 0f;
       _animator.SetTrigger("die");
       _audioSource.PlayOneShot(_deathSound);
    }
@@ -235,9 +241,13 @@ public class PlayerController : UnitController
    {
       if (collision.CompareTag("RadioTower"))
       {
-         UltimateCharge += Time.deltaTime;
-         if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
-         EventManager.FireEvent("PlayerCharge");
+         var tower = collision.GetComponent<RadioTowerController>();
+         if (tower.Transmitting)
+         {
+            UltimateCharge += Time.deltaTime * _ultimateChargeRate;
+            if (UltimateCharge > MaxUltimateCharge) UltimateCharge = MaxUltimateCharge;
+            EventManager.FireEvent("PlayerCharge");
+         }
       }
    }
 }
